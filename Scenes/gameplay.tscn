@@ -1,3 +1,38 @@
-[gd_scene format=3 uid="uid://ddqooonv3q8n7"]
+[gd_scene load_steps=6 format=3 uid="uid://ddqooonv3q8n7"]
 
-[node name="Node2D" type="Node2D"]
+[ext_resource type="Script" uid="uid://dqoea6dokts24" path="res://Scripts/controllers/camera_controller.gd" id="1_r8bcl"]
+[ext_resource type="Script" uid="uid://dpk5ytof23au7" path="res://Scripts/controllers/gameplay_controller.gd" id="1_rlidi"]
+[ext_resource type="Script" uid="uid://bvsl7af224m8g" path="res://Scripts/controllers/animation_controller.gd" id="2_rlidi"]
+[ext_resource type="Script" uid="uid://d3vdgbnb16827" path="res://Scripts/player.gd" id="5_puebw"]
+[ext_resource type="Script" uid="uid://dvwjmeb2xlqxa" path="res://Scenes/player_data_manager.gd" id="5_rlidi"]
+
+[node name="GameplayScene" type="Node2D"]
+script = ExtResource("1_rlidi")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+script = ExtResource("1_r8bcl")
+
+[node name="GameplayAnimatedSprite" type="AnimatedSprite2D" parent="."]
+
+[node name="GameLogic" type="Node" parent="."]
+
+[node name="RoundController" type="Node" parent="GameLogic"]
+script = ExtResource("2_rlidi")
+
+[node name="AnimationController" type="Node" parent="GameLogic"]
+script = ExtResource("2_rlidi")
+
+[node name="PlayerDataManager" type="Node" parent="GameLogic"]
+script = ExtResource("5_rlidi")
+
+[node name="Player1Data" type="Node" parent="GameLogic/PlayerDataManager"]
+script = ExtResource("5_puebw")
+
+[node name="Player2Data" type="Node" parent="GameLogic/PlayerDataManager"]
+script = ExtResource("5_puebw")
+
+[node name="VFXLayer" type="Node2D" parent="."]
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Audio" type="Node" parent="."]
