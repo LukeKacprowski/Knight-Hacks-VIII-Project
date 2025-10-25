@@ -1,16 +1,10 @@
-extends Node 
-class_name PlayerData
+extends Node
 
-var player_id: int
-var player_name: String = ""
 
-var lives: int = 3
-var max_lives: int = 3
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
 
-func setup(id: int, name: String):
-	player_id = id
-	player_name = name
-	reset_lives()
 
 func take_damage():
 	lives -= 1
