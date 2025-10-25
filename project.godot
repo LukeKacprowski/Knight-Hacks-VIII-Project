@@ -19,3 +19,11 @@ config/features=PackedStringArray("4.5", "Forward Plus")
 GameManager="*res://Scripts/managers/game_manager.gd"
 Music="*res://Scenes/music.tscn"
 InputManager="*res://Scripts/managers/input_manager.gd"
+<<<<<<< HEAD
+
+[display]
+
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
+=======
+>>>>>>> parent of 19dab6c (Merge branch 'main' of https://github.com/LukeKacprowski/Knight-Hacks-VIII-Project)
