@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://ddqooonv3q8n7"]
+[gd_scene load_steps=36 format=3 uid="uid://ddqooonv3q8n7"]
 
 [ext_resource type="Script" uid="uid://dqoea6dokts24" path="res://Scripts/controllers/camera_controller.gd" id="1_r8bcl"]
 [ext_resource type="Script" path="res://Scripts/controllers/gameplay_controller.gd" id="1_rlidi"]
@@ -7,6 +7,8 @@
 [ext_resource type="Script" uid="uid://bim8yf5k0w78l" path="res://Scripts/controllers/round_controller.gd" id="4_1qnfl"]
 [ext_resource type="Script" uid="uid://d3vdgbnb16827" path="res://Scripts/player.gd" id="5_puebw"]
 [ext_resource type="Script" path="res://Scenes/player_data_manager.gd" id="5_rlidi"]
+[ext_resource type="Texture2D" uid="uid://bhwiooed0q65q" path="res://Assets/ui/timerUI/TimerProgress.png" id="8_puebw"]
+[ext_resource type="Texture2D" uid="uid://cjno2nnge1idt" path="res://Assets/ui/timerUI/TimerBorder.png" id="9_5h7oy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1qnfl"]
 atlas = ExtResource("3_rlidi")
@@ -104,6 +106,10 @@ region = Rect2(7040, 0, 320, 180)
 atlas = ExtResource("3_rlidi")
 region = Rect2(7360, 0, 320, 180)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_oocbu"]
+atlas = ExtResource("3_rlidi")
+region = Rect2(0, 0, 320, 180)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_oocbu"]
 animations = [{
 "frames": [{
@@ -180,7 +186,15 @@ animations = [{
 "texture": SubResource("AtlasTexture_j1o6k")
 }],
 "loop": true,
-"name": &"default",
+"name": &"clash",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oocbu")
+}],
+"loop": true,
+"name": &"idle",
 "speed": 5.0
 }]
 
@@ -194,7 +208,9 @@ script = ExtResource("1_r8bcl")
 [node name="GameplayAnimatedSprite" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_oocbu")
-frame_progress = 0.97608095
+animation = &"clash"
+frame = 4
+frame_progress = 0.5472043
 
 [node name="GameLogic" type="Node" parent="."]
 
@@ -216,5 +232,23 @@ script = ExtResource("5_puebw")
 [node name="VFXLayer" type="Node2D" parent="."]
 
 [node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Timer" type="TextureProgressBar" parent="UI"]
+visible = false
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -18.0
+offset_top = -72.0
+offset_right = -18.0
+offset_bottom = -72.0
+grow_horizontal = 2
+grow_vertical = 2
+fill_mode = 5
+texture_under = ExtResource("8_puebw")
+texture_over = ExtResource("9_5h7oy")
+texture_progress = ExtResource("8_puebw")
+tint_under = Color(1, 1, 1, 0.41960785)
 
 [node name="Audio" type="Node" parent="."]
