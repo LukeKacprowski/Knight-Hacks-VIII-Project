@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://ddqooonv3q8n7"]
 
 [ext_resource type="Script" uid="uid://dqoea6dokts24" path="res://Scripts/controllers/camera_controller.gd" id="1_r8bcl"]
-[ext_resource type="Script" uid="uid://dpk5ytof23au7" path="res://Scripts/controllers/gameplay_controller.gd" id="1_rlidi"]
+[ext_resource type="Script" path="res://Scripts/controllers/gameplay_controller.gd" id="1_rlidi"]
 [ext_resource type="Script" uid="uid://bvsl7af224m8g" path="res://Scripts/controllers/animation_controller.gd" id="2_rlidi"]
 [ext_resource type="Script" uid="uid://d3vdgbnb16827" path="res://Scripts/player.gd" id="5_puebw"]
-[ext_resource type="Script" uid="uid://dvwjmeb2xlqxa" path="res://Scenes/player_data_manager.gd" id="5_rlidi"]
+[ext_resource type="Script" path="res://Scenes/player_data_manager.gd" id="5_rlidi"]
 
 [node name="GameplayScene" type="Node2D"]
 script = ExtResource("1_rlidi")
