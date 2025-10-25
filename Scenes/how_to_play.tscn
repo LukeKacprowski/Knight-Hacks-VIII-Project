@@ -1,3 +1,156 @@
-[gd_scene format=3 uid="uid://bodvh0ixffvtx"]
+[gd_scene load_steps=7 format=3 uid="uid://bodvh0ixffvtx"]
 
-[node name="Node2D" type="Node2D"]
+[ext_resource type="Script" uid="uid://dixj7dhljkhmj" path="res://Scripts/how_to_play.gd" id="1_hl01w"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wpr6w"]
+bg_color = Color(0.031654898, 0.0316549, 0.03165488, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dlnx3"]
+bg_color = Color(0.47079715, 0, 0, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(1, 0.21267998, 0.15969571, 0.6)
+shadow_size = 8
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lonyb"]
+bg_color = Color(0.37823164, 6.0464254e-07, 4.813075e-08, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(1, 0.21267998, 0.15969571, 0.6)
+shadow_size = 8
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7d32w"]
+bg_color = Color(0.3764706, 0, 0, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(1, 0.21267998, 0.15969571, 0.6)
+shadow_size = 8
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i0xi1"]
+
+[node name="HowToPlay" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -2.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hl01w")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.505
+anchor_top = 0.5
+anchor_right = 0.505
+anchor_bottom = 0.5
+offset_left = -602.76
+offset_top = -336.0
+offset_right = 601.24
+offset_bottom = 361.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wpr6w")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.49800003
+anchor_top = 0.5
+anchor_right = 0.49800003
+anchor_bottom = 0.5
+offset_left = -209.69604
+offset_top = -324.0
+offset_right = 220.30396
+offset_bottom = -188.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "How To Play"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Instructions" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -545.0
+offset_top = -215.0
+offset_right = 527.0
+offset_bottom = 333.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 17
+text = "Welcome to the ultimate test of speed and precision!In this two-player showdown, quick reflexes and flawless timing will determine the victor.
+OBJECTIVE
+Face off against your opponent in a series of rounds where every second — and every keystroke — matters.
+A random combination of three keys will appear on the screen. 
+Your goal is to enter the sequence faster than your opponent!
+The player who completes the combo correctly and first will unleash an attack on their rival.  
+Accuracy and reaction time both count — one wrong key can cost you the round!
+PLAYERS
+- Player 1: Uses their own unique set of input keys.  
+- Player 2: Has a separate key set for their side of the arena.  
+Stay focused on your side and react the instant a new combo appears!
+THE CHALLENGE
+Each round becomes harder — combinations grow longer, faster, and more complex.
+You’ll need both lightning-fast reflexes and perfect accuracy to stay ahead of your opponent.
+WINNING
+Each successful combo lands an attack.  
+The player who survives the longest — or scores the most hits — wins the match and earns the title of Ultimate Combo Master!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Back" type="Button" parent="."]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 30.0
+offset_right = 127.0
+offset_bottom = 72.0
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_dlnx3")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_lonyb")
+theme_override_styles/hover = SubResource("StyleBoxFlat_7d32w")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_i0xi1")
+text = "Back"
+
+[node name="next" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1034.0
+offset_top = 26.0
+offset_right = 1121.0
+offset_bottom = 68.0
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_dlnx3")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_lonyb")
+theme_override_styles/hover = SubResource("StyleBoxFlat_7d32w")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_i0xi1")
+text = "Next"
+
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="next" to="." method="_on_next_pressed"]
