@@ -11,6 +11,7 @@ func _ready() -> void:
 	var _main_menu  := func() -> void: GameManager.goto("main_menu")
 	play_again_button.pressed.connect(_play_again)
 	main_menu_button.pressed.connect(_main_menu)
+	AudioManager.play_menu_music()
 
 	# Pull winner from GameManager and update label
 	var w: int = GameManager.get_winner()

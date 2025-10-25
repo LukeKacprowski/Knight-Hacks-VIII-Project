@@ -59,6 +59,7 @@ func _on_both_players_succeed():
 
 func _on_both_players_failed():
 	print("Both players failed!")
+	AudioManager.play_sword_clash()
 	InputManager.end_round()
 	
 	#Play clash animation
@@ -104,6 +105,7 @@ func _on_player_key_pressed(player_id: int, correct: bool):
 
 func _on_player_damaged(player_id: int, lives_left: int):
 	print("Player ", player_id + 1, " damaged. Lives left: ", lives_left)
+	AudioManager.play_player_hit()
 	#Update Lives on player HUD
 	if player_id == 0:
 		#update p1 HUD
@@ -123,6 +125,11 @@ func _on_player_died(player_id: int):
 	
 	#Show result screen
 	var winner_id = 1 - player_id
+	if (winner_id + 1 == 1):
+		AudioManager.play_player1_win()
+	if (winner_id + 1 == 2):
+		AudioManager.play_player2_win()
+		
 	print("Winner: Player ", winner_id + 1)
 	GameManager.set_winner(winner_id)
 	GameManager.goto("results")
