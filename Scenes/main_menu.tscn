@@ -64,6 +64,7 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_28flt")
 
 [node name="PixellabRemoveThePerson1761392256343" type="Sprite2D" parent="Panel"]
+texture_filter = 1
 position = Vector2(574.00006, 353.06247)
 scale = Vector2(5.561524, 5.561524)
 texture = ExtResource("2_48xlc")
