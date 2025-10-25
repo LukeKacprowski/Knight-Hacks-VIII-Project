@@ -1,6 +1,7 @@
 extends Node
 
 #Signals for GameplayScene
+signal player_key_pressed(player_id: int, correct: bool)
 signal round_timer_updated(round_time: float)
 signal round_started(p1_letter_sequence: Array, p2_letter_sequence: Array)
 signal player1_wins_round
@@ -28,11 +29,6 @@ var player_failed: Array = [false, false]
 #Result Cases
 var both_players_finish: bool = false
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	randomize()
-	
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if not round_active:
@@ -53,19 +49,11 @@ func _process(delta: float) -> void:
 		_handle_timeout()
 
 func load_sequences() -> void:
+	randomize()
 	for i in 3:
 		var num: int = randi_range(1, 6)
 		p1_letter_sequence.append(p1_letter_dict[num])
 		p2_letter_sequence.append(p2_letter_dict[num])
-
-func _input(event):
-	if event is InputEventKey and event.pressed and not event.echo:
-		var key = OS.get_keycode_string(event.keycode).to_upper()
-	
-		if key in p1_reversed_dict:
-			handle_p1_input(key)
-		elif key in p2_reversed_dict:
-			handle_p2_input(key)
 
 func handle_p1_input(key: String):
 	if p1_letter_sequence.is_empty():
@@ -74,8 +62,10 @@ func handle_p1_input(key: String):
 	var popped = p1_letter_sequence.pop_back()
 	
 	if popped == key:
+		emit_signal("player_key_pressed", 0, true)
 		return
 	else:
+		emit_signal("player_key_pressed", 0, false)
 		player_failed[0] = true
 		return
 
@@ -86,8 +76,10 @@ func handle_p2_input(key: String):
 	var popped = p2_letter_sequence.pop_back()
 	
 	if popped == key:
+		emit_signal("player_key_pressed", 1, true)
 		return 
 	else:
+		emit_signal("player_key_pressed", 1, false)
 		player_failed[1] = true
 		return
 
@@ -98,6 +90,8 @@ func start_round(round_timer: float):
 	round_active = true
 	round_time = round_timer
 	current_time = round_time
+	InputManager.handle_p1_input.connect(handle_p1_input)
+	InputManager.handle_p2_input.connect(handle_p2_input)
 	load_sequences()
 	emit_signal("round_started", p1_letter_sequence, p2_letter_sequence)
 

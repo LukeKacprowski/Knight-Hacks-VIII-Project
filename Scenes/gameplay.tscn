@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://ddqooonv3q8n7"]
+[gd_scene load_steps=6 format=3 uid="uid://ddqooonv3q8n7"]
 
 [ext_resource type="Script" uid="uid://dqoea6dokts24" path="res://Scripts/controllers/camera_controller.gd" id="1_r8bcl"]
 [ext_resource type="Script" uid="uid://dya6wgqx4b1um" path="res://Scripts/controllers/gameplay_controller.gd" id="1_rlidi"]
 [ext_resource type="Script" uid="uid://bvsl7af224m8g" path="res://Scripts/controllers/animation_controller.gd" id="2_rlidi"]
-[ext_resource type="Script" uid="uid://bim8yf5k0w78l" path="res://Scripts/controllers/round_controller.gd" id="3_1qnfl"]
 [ext_resource type="Script" uid="uid://d3vdgbnb16827" path="res://Scripts/player.gd" id="5_puebw"]
 [ext_resource type="Script" uid="uid://co8f0t5c5wxmt" path="res://Scenes/player_data_manager.gd" id="5_rlidi"]
 
@@ -13,7 +12,7 @@ script = ExtResource("1_rlidi")
 [node name="Camera2D" type="Camera2D" parent="."]
 script = ExtResource("1_r8bcl")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="GameplayAnimatedSprite" type="AnimatedSprite2D" parent="."]
 
 [node name="GameLogic" type="Node" parent="."]
 
@@ -21,7 +20,7 @@ script = ExtResource("1_r8bcl")
 script = ExtResource("2_rlidi")
 
 [node name="AnimationController" type="Node" parent="GameLogic"]
-script = ExtResource("3_1qnfl")
+script = ExtResource("2_rlidi")
 
 [node name="PlayerDataManager" type="Node" parent="GameLogic"]
 script = ExtResource("5_rlidi")

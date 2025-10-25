@@ -13,6 +13,7 @@ var new_round_time: float
 func _ready() -> void:
 	
 	#Connect RoundController signals
+	round_controller.player_key_pressed.connect(_on_player_key_pressed)
 	round_controller.round_timer_updated.connect(_on_round_timer_updated)
 	round_controller.round_started.connect(_on_round_started)
 	round_controller.player1_wins_round.connect(_on_player1_wins_round)
@@ -41,13 +42,16 @@ func _on_round_started(p1_letter_sequence: Array, p2_letter_sequence: Array):
 	pass
 
 func _on_both_players_succeed():
+	InputManager.end_round()
 	#End input manager round
 	
 	#Play clash animation
 	
+	
 	start_new_round(new_round_time)
 
 func _on_both_players_failed():
+	InputManager.end_round()
 	#End input manager round
 	
 	#Play clash animation
@@ -55,6 +59,7 @@ func _on_both_players_failed():
 	start_new_round(new_round_time)
 
 func _on_player1_wins_round():
+	InputManager.end_round()
 	#End input manager round
 	
 	#Play clash animation
@@ -63,9 +68,26 @@ func _on_player1_wins_round():
 	pass
 
 func _on_player2_wins_round():
+	InputManager.end_round()
 	#End input manager round
 	
 	#Play clash animation
 	
 	#Player data manager will emit signal for lives
 	pass
+
+func _on_player_key_pressed(player_id: int, correct: bool):
+	if player_id == 0:
+		if correct == true:
+			#Play correct button animation
+			pass
+		else:
+			#Play incorrect button animation
+			pass
+	else:
+		if correct == true:
+			#Play correct button animation
+			pass
+		else:
+			#Play incorrect button animation
+			pass
