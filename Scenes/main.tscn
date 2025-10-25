@@ -1,6 +1,19 @@
 [gd_scene load_steps=2 format=3 uid="uid://dy1hpxxxg4e22"]
 
-[ext_resource type="Script" uid="uid://ldwt5n40ea8" path="res://Scripts/main.gd" id="1_jjgbg"]
+[sub_resource type="GDScript" id="GDScript_7u77a"]
+script/source = "
+extends Node2D
+
+#This tells the start code to wait, for current frame to finish 
+func _ready() -> void:
+	call_deferred(\"_start\")
+
+# this start the game at the main menu then removesd
+# the call when it swicthes to another scence 
+func _start() -> void:
+	GameManager.goto(\"main_menu\")
+	queue_free()
+"
 
 [node name="Main" type="Node2D"]
-script = ExtResource("1_jjgbg")
+script = SubResource("GDScript_7u77a")
