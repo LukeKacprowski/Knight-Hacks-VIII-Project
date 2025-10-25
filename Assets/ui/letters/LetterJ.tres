@@ -1,0 +1,47 @@
+[gd_resource type="SpriteFrames" load_steps=5 format=3]
+
+[ext_resource type="Texture2D" path="res://Assets/ui/letters/LetterJ-Sheet.png" id="1_jjc31"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bjpiv"]
+atlas = ExtResource("1_jjc31")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_770qv"]
+atlas = ExtResource("1_jjc31")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c1oav"]
+atlas = ExtResource("1_jjc31")
+region = Rect2(72, 0, 24, 24)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bjpiv")
+}],
+"loop": false,
+"name": &"correct",
+"speed": 10.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_770qv")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c1oav")
+}],
+"loop": false,
+"name": &"incorrect",
+"speed": 10.0
+}]
