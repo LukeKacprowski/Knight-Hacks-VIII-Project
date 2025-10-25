@@ -16,7 +16,7 @@ func _input(event):
 		var key = OS.get_keycode_string(event.keycode).to_upper()
 		if key.to_upper() in p1_keys:
 			emit_signal("handle_p1_input", key)
-		elif key in p2_keys:
+		elif key.to_upper() in p2_keys:
 			emit_signal("handle_p2_input", key)
 
 func reset_round():
