@@ -8,7 +8,28 @@ const SCENE_PATHS := {
 	"how_to_play": "res://Scenes/how_to_play.tscn",
 	"how_to_play2": "res://Scenes/how_to_play2.tscn",
 	"gameplay":    "res://Scenes/gameplay.tscn",
+	"results": "res://Scenes/results.tscn",
 }
+
+var last_run: Dictionary = {
+	"from": "gameplay",
+	"winner": 0
+}
+
+func set_results(stats: Dictionary) -> void:
+	for k in stats.keys():
+		last_run[k] = stats[k]
+
+func finish_run(stats: Dictionary) -> void:
+	set_results(stats)
+	goto("results")
+
+func restart_last_level() -> void:
+	var from: String = last_run.get("from", "gameplay")
+	if SCENE_PATHS.has(from):
+		goto(from)
+	else:
+		goto("main_menu")
 
 # This function swichtes to a new scene 
 func goto(scene_name: String, load_async := false) -> void:

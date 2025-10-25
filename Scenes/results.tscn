@@ -1,0 +1,118 @@
+[gd_scene load_steps=8 format=3 uid="uid://c3r43hrdy0wqp"]
+
+[ext_resource type="Script" uid="uid://5vh2fa37m3gf" path="res://Scripts/results.gd" id="1_r1how"]
+[ext_resource type="Texture2D" uid="uid://c0rkwb7vi4nch" path="res://Assets/ui/main_menu/pixellab-remove-the-person--1761392256343.png" id="2_3cjc3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a7aex"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3cjc3"]
+bg_color = Color(0.47058824, 0, 0, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(1, 0.21267998, 0.15969571, 0.6)
+shadow_size = 8
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3iro3"]
+bg_color = Color(0.37823164, 6.0464254e-07, 4.813075e-08, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(1, 0.21267998, 0.15969571, 0.6)
+shadow_size = 8
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i07ch"]
+bg_color = Color(0.3764706, 0, 0, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(1, 0.21267998, 0.15969571, 0.6)
+shadow_size = 8
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fhw0o"]
+
+[node name="Results" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.12
+script = ExtResource("1_r1how")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_top = 3.0
+offset_right = 1154.0
+offset_bottom = 641.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_a7aex")
+
+[node name="PixellabRemoveThePerson1761392256343" type="Sprite2D" parent="Panel"]
+position = Vector2(569, 332.00003)
+scale = Vector2(5.1406255, 5.1406255)
+texture = ExtResource("2_3cjc3")
+
+[node name="Label" type="Label" parent="Panel"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -224.0
+offset_top = 14.0
+offset_right = 244.7323
+offset_bottom = 124.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.47058824, 0, 0, 1)
+theme_override_constants/shadow_offset_x = -4
+theme_override_constants/shadow_offset_y = 4
+theme_override_font_sizes/font_size = 50
+text = "Results "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 448.0
+offset_top = 440.0
+offset_right = 688.5574
+offset_bottom = 532.0
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_3cjc3")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_3iro3")
+theme_override_styles/hover = SubResource("StyleBoxFlat_i07ch")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_fhw0o")
+text = "Play Again"
+
+[node name="Button2" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 452.0
+offset_top = 306.0
+offset_right = 689.9426
+offset_bottom = 397.0
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_3cjc3")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_3iro3")
+theme_override_styles/hover = SubResource("StyleBoxFlat_i07ch")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_fhw0o")
+text = "Main Menu"
