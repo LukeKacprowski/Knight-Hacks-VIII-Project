@@ -1,11 +1,19 @@
-extends Node
+extends Node 
+class_name PlayerData
 
+var player_id: int
+var player_name: String = ""
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+var lives: int = 3
+var max_lives: int = 3
 
+func setup(id: int, name: String):
+	player_id = id
+	player_name = name
+	reset_lives()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func take_damage():
+	lives -= 1
+
+func reset_lives():
+	lives = max_lives
