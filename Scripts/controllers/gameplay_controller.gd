@@ -101,7 +101,7 @@ func _on_player_key_pressed(player_id: int, correct: bool):
 			#Play incorrect button animation
 
 func _on_player_damaged(player_id: int, lives_left: int):
-	print("Player ", player_id, " damaged. Lives left: ", lives_left)
+	print("Player ", player_id + 1, " damaged. Lives left: ", lives_left)
 	#Update Lives on player HUD
 	if player_id == 0:
 		#update p1 HUD
@@ -114,9 +114,9 @@ func _on_player_damaged(player_id: int, lives_left: int):
 		start_new_round(new_round_time)
 
 func _on_player_died(player_id: int):
-	print("Player ", player_id, " died!")
+	print("Player ", player_id + 1, " died!")
 	#Play death animation
 	
 	#Show result screen
 	var winner_id = 1 - player_id
-	print("Winner: Player ", winner_id)
+	print("Winner: Player ", winner_id + 1)
