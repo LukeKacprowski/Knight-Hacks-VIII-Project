@@ -11,6 +11,8 @@ var new_round_time: float
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	#Connect InputManager signal
+	InputManager.player_key_pressed.connnect(_on_player_key_pressed)
 	
 	#Connect RoundController signals
 	round_controller.player_key_pressed.connect(_on_player_key_pressed)
@@ -20,6 +22,10 @@ func _ready() -> void:
 	round_controller.player2_wins_round.connect(_on_player2_wins_round)
 	round_controller.both_players_failed.connect(_on_both_players_failed)
 	round_controller.both_players_succeed.connect(_on_both_players_succeed)
+	
+	#Connect PlayerDataManager signals
+	player_data_manager.player_damaged.connect(_on_player_damaged)
+	player_data_manager.player_died.connect(_on_player_died)
 	
 	start_game_sequence()
 
@@ -43,7 +49,6 @@ func _on_round_started(p1_letter_sequence: Array, p2_letter_sequence: Array):
 
 func _on_both_players_succeed():
 	InputManager.end_round()
-	#End input manager round
 	
 	#Play clash animation
 	
@@ -52,7 +57,6 @@ func _on_both_players_succeed():
 
 func _on_both_players_failed():
 	InputManager.end_round()
-	#End input manager round
 	
 	#Play clash animation
 	
@@ -60,7 +64,6 @@ func _on_both_players_failed():
 
 func _on_player1_wins_round():
 	InputManager.end_round()
-	#End input manager round
 	
 	#Play clash animation
 	
@@ -69,7 +72,6 @@ func _on_player1_wins_round():
 
 func _on_player2_wins_round():
 	InputManager.end_round()
-	#End input manager round
 	
 	#Play clash animation
 	
@@ -91,3 +93,21 @@ func _on_player_key_pressed(player_id: int, correct: bool):
 		else:
 			#Play incorrect button animation
 			pass
+
+func _on_player_damaged(player_id: int, lives_left: int):
+	#Update Lives on player HUD
+	if player_id == 1:
+		#update p1 HUD
+		pass
+	else:
+		#update p2 HUD
+		pass
+	
+	if lives_left > 0:
+		start_new_round(new_round_time)
+
+func _on_player_died(player_id: int):
+	#Play death animation
+	
+	#Show result screen
+	var winnner_id = 1 - player_id

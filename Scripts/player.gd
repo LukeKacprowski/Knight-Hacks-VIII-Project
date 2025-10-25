@@ -17,3 +17,9 @@ func take_damage():
 
 func reset_lives():
 	lives = max_lives
+
+func get_lives():
+	return lives
+
+func is_alive() -> bool:
+	return lives > 0

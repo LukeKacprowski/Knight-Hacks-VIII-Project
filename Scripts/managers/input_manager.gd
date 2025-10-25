@@ -3,7 +3,6 @@ extends Node
 signal handle_p1_input(key: String)
 signal handle_p2_input(key: String)
 
-
 const p1_keys = ["q", "w", "e", "a", "s", "d"]
 const p2_keys = ["u", "i", "o", "j", "k", "l"]
 
