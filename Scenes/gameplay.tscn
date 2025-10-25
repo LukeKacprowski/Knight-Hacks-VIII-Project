@@ -201,7 +201,7 @@ animations = [{
 [node name="GameplayScene" type="Node2D"]
 script = ExtResource("1_rlidi")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." groups=["shake_cam"]]
 zoom = Vector2(3.6, 3.6)
 script = ExtResource("1_r8bcl")
 

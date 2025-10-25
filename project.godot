@@ -25,6 +25,10 @@ AudioManager="*res://Scripts/managers/audio_manager.gd"
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 
+[global_group]
+
+shake_cam="shakes the camera"
+
 [input]
 
 w={

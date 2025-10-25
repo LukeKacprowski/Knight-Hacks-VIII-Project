@@ -103,8 +103,11 @@ func _on_player_key_pressed(player_id: int, correct: bool):
 			print("P2 incorrect key")
 			#Play incorrect button animation
 
+@onready var cameras: Camera2D = $Camera2D
+
 func _on_player_damaged(player_id: int, lives_left: int):
 	print("Player ", player_id + 1, " damaged. Lives left: ", lives_left)
+	cameras.trigger_shake()
 	AudioManager.play_player_hit()
 	#Update Lives on player HUD
 	if player_id == 0:
