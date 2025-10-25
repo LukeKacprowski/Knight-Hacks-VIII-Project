@@ -1,4 +1,4 @@
-extends Node2D
+extends Node
 
 #This tells the start code to wait, for current frame to finish 
 func _ready() -> void:

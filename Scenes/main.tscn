@@ -1,6 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://dy1hpxxxg4e22"]
+[gd_scene load_steps=3 format=3 uid="uid://dy1hpxxxg4e22"]
 
 [ext_resource type="Script" uid="uid://sql3833bmmjf" path="res://Scripts/main.gd" id="1_jjgbg"]
+[ext_resource type="PackedScene" uid="uid://2jv37ruge78" path="res://Scenes/main_menu.tscn" id="2_bo1nx"]
 
-[node name="Main" type="Node2D"]
+[node name="Main" type="Node"]
 script = ExtResource("1_jjgbg")
+
+[node name="MainMenu" parent="." instance=ExtResource("2_bo1nx")]
+offset_left = -8.0
+offset_top = 12.0
+offset_right = -8.0
+offset_bottom = 12.0
