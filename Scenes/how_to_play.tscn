@@ -12,7 +12,6 @@ corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 shadow_color = Color(1, 0.21267998, 0.15969571, 0.6)
-shadow_size = 8
 shadow_offset = Vector2(0, 4)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lonyb"]
@@ -90,9 +89,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -545.0
-offset_top = -215.0
+offset_top = -233.0
 offset_right = 527.0
-offset_bottom = 333.0
+offset_bottom = 315.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 17
@@ -103,10 +102,6 @@ A random combination of three keys will appear on the screen.
 Your goal is to enter the sequence faster than your opponent!
 The player who completes the combo correctly and first will unleash an attack on their rival.  
 Accuracy and reaction time both count — one wrong key can cost you the round!
-PLAYERS
-- Player 1: Uses their own unique set of input keys.  
-- Player 2: Has a separate key set for their side of the arena.  
-Stay focused on your side and react the instant a new combo appears!
 THE CHALLENGE
 Each round becomes harder — combinations grow longer, faster, and more complex.
 You’ll need both lightning-fast reflexes and perfect accuracy to stay ahead of your opponent.

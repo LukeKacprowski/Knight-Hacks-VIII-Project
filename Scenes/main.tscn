@@ -18,5 +18,9 @@ offset_bottom = 12.0
 [node name="HowToPlay" parent="." instance=ExtResource("3_8gbba")]
 
 [node name="HowToPlay2" parent="." instance=ExtResource("4_jjvhh")]
+offset_left = 4.0
+offset_top = -1.0
+offset_right = 4.0
+offset_bottom = -1.0
 
 [node name="Results" parent="." instance=ExtResource("5_kry3j")]
