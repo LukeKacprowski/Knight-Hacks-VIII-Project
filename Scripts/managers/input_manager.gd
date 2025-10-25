@@ -1,12 +1,10 @@
 extends Node
 
+signal handle_p1_input(key: String)
+signal handle_p2_input(key: String)
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-const p1_keys = ["q", "w", "e", "a", "s", "d"]
-const p2_keys = ["u", "i", "o", "j", "k", "l"]
+const p1_keys = ["Q", "W", "E", "A", "S", "D"]
+const p2_keys = ["U", "I", "O", "J", "K", "L"]
 
 var round_active: bool = false
 
@@ -16,8 +14,7 @@ func _input(event):
 	
 	if event is InputEventKey and event.pressed and not event.echo:
 		var key = OS.get_keycode_string(event.keycode).to_upper()
-	
-		if key in p1_keys:
+		if key.to_upper() in p1_keys:
 			emit_signal("handle_p1_input", key)
 		elif key in p2_keys:
 			emit_signal("handle_p2_input", key)
