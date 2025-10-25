@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://2jv37ruge78"]
+[gd_scene load_steps=8 format=3 uid="uid://2jv37ruge78"]
 
 [ext_resource type="Script" uid="uid://ywrcdxeq26xb" path="res://Scripts/main_menu.gd" id="1_28flt"]
+[ext_resource type="Texture2D" uid="uid://c0rkwb7vi4nch" path="res://Assets/ui/main_menu/pixellab-remove-the-person--1761392256343.png" id="2_48xlc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_28flt"]
 bg_color = Color(0.031654898, 0.0316549, 0.03165488, 1)
@@ -62,6 +63,11 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_28flt")
 
+[node name="PixellabRemoveThePerson1761392256343" type="Sprite2D" parent="Panel"]
+position = Vector2(574.00006, 353.06247)
+scale = Vector2(5.561524, 5.561524)
+texture = ExtResource("2_48xlc")
+
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
@@ -69,10 +75,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -179.0
-offset_top = -83.0
-offset_right = 165.0
-offset_bottom = 171.0
+offset_left = -138.0
+offset_top = -26.0
+offset_right = 110.0
+offset_bottom = 267.60922
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 18
@@ -131,10 +137,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -492.0
-offset_top = -248.0
+offset_left = -485.0
+offset_top = -340.0
 offset_right = 486.0
-offset_bottom = -114.0
+offset_bottom = -193.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_shadow_color = Color(0.47058824, 0, 0, 1)
