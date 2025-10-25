@@ -23,6 +23,7 @@ func _ready() -> void:
 	player_data_manager.player_damaged.connect(_on_player_damaged)
 	player_data_manager.player_died.connect(_on_player_died)
 	
+	AudioManager.play_game_music()
 	start_game_sequence()
 
 func start_game_sequence():
@@ -48,6 +49,7 @@ func _on_round_started(p1_letter_sequence: Array, p2_letter_sequence: Array):
 
 func _on_both_players_succeed():
 	print("Both players succeed!")
+	AudioManager.play_sword_clash()
 	InputManager.end_round()
 	
 	#Play clash animation
