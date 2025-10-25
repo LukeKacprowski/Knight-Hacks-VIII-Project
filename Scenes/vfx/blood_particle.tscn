@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://clc0fk07etsq2"]
+
+[node name="BloodParticle" type="Node2D"]
