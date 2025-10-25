@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://dy1hpxxxg4e22"]
+[gd_scene load_steps=5 format=3 uid="uid://dy1hpxxxg4e22"]
 
 [ext_resource type="Script" uid="uid://sql3833bmmjf" path="res://Scripts/main.gd" id="1_jjgbg"]
 [ext_resource type="PackedScene" uid="uid://2jv37ruge78" path="res://Scenes/main_menu.tscn" id="2_bo1nx"]
+[ext_resource type="PackedScene" uid="uid://bodvh0ixffvtx" path="res://Scenes/how_to_play.tscn" id="3_8gbba"]
+[ext_resource type="PackedScene" uid="uid://sfikasdebsy" path="res://Scenes/how_to_play2.tscn" id="4_jjvhh"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_jjgbg")
@@ -11,3 +13,7 @@ offset_left = -8.0
 offset_top = 12.0
 offset_right = -8.0
 offset_bottom = 12.0
+
+[node name="HowToPlay" parent="." instance=ExtResource("3_8gbba")]
+
+[node name="HowToPlay2" parent="." instance=ExtResource("4_jjvhh")]

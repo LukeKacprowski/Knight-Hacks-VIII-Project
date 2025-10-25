@@ -6,6 +6,7 @@ const SCENE_PATHS := {
 	"main":        "res://Scenes/main.tscn",
 	"main_menu":   "res://Scenes/main_menu.tscn",
 	"how_to_play": "res://Scenes/how_to_play.tscn",
+	"how_to_play2": "res://Scenes/how_to_play2.tscn",
 	"gameplay":    "res://Scenes/gameplay.tscn",
 }
 
