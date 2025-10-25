@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://blaj6s8pcyo35"]
+
+[ext_resource type="Script" uid="uid://dkhis72kimh11" path="res://Scripts/ui/letter_display.gd" id="1_dgkvn"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8qo7a"]
+
+[node name="LetterDisplay" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dgkvn")
+
+[node name="LetterSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(30, 30)
+sprite_frames = SubResource("SpriteFrames_8qo7a")
