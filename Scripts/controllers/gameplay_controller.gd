@@ -8,6 +8,7 @@ extends Node
 @onready var timer = $UI/Timer
 @onready var p1_letter_container = $"UI/Player1HUD/Letter Container"
 @onready var p2_letter_container = $"UI/Player2HUD/Letter Container"
+@onready var cameras: Camera2D = $Camera2D
 
 var game_started: bool = false
 const base_round_time: float = 6.0
@@ -65,6 +66,7 @@ func _on_round_started(p1_letter_sequence: Array, p2_letter_sequence: Array):
 
 func _on_both_players_succeed():
 	print("Both players succeed!")
+	cameras.trigger_shake()
 	AudioManager.play_sword_clash()
 	InputManager.end_round()
 	
@@ -74,6 +76,7 @@ func _on_both_players_succeed():
 
 func _on_both_players_failed():
 	print("Both players failed!")
+	cameras.trigger_shake()
 	AudioManager.play_sword_clash()
 	InputManager.end_round()
 	
@@ -113,11 +116,10 @@ func _on_player_key_pressed(player_id: int, correct: bool):
 			print("P2 incorrect key")
 			letter_display_manager.play_letter_animation(1, false)
 
-@onready var cameras: Camera2D = $Camera2D
+
 
 func _on_player_damaged(player_id: int, lives_left: int):
 	print("Player ", player_id + 1, " damaged. Lives left: ", lives_left)
-	cameras.trigger_shake()
 	AudioManager.play_player_hit()
 	#Update Lives on player HUD
 	if player_id == 0:
