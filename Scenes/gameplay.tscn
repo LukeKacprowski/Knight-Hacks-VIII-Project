@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://ddqooonv3q8n7"]
+[gd_scene load_steps=34 format=3 uid="uid://ddqooonv3q8n7"]
 
 [ext_resource type="Script" uid="uid://dqoea6dokts24" path="res://Scripts/controllers/camera_controller.gd" id="1_r8bcl"]
 [ext_resource type="Script" path="res://Scripts/controllers/gameplay_controller.gd" id="1_rlidi"]
@@ -104,6 +104,10 @@ region = Rect2(7040, 0, 320, 180)
 atlas = ExtResource("3_rlidi")
 region = Rect2(7360, 0, 320, 180)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_oocbu"]
+atlas = ExtResource("3_rlidi")
+region = Rect2(0, 0, 320, 180)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_oocbu"]
 animations = [{
 "frames": [{
@@ -180,7 +184,15 @@ animations = [{
 "texture": SubResource("AtlasTexture_j1o6k")
 }],
 "loop": true,
-"name": &"default",
+"name": &"clash",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oocbu")
+}],
+"loop": true,
+"name": &"idle",
 "speed": 5.0
 }]
 
@@ -194,7 +206,9 @@ script = ExtResource("1_r8bcl")
 [node name="GameplayAnimatedSprite" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_oocbu")
-frame_progress = 0.97608095
+animation = &"clash"
+frame = 4
+frame_progress = 0.5472043
 
 [node name="GameLogic" type="Node" parent="."]
 
