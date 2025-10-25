@@ -113,6 +113,8 @@ func _on_player_damaged(player_id: int, lives_left: int):
 	if lives_left > 0:
 		start_new_round(new_round_time)
 
+signal game_over(winner_id: int)
+
 func _on_player_died(player_id: int):
 	print("Player ", player_id, " died!")
 	#Play death animation
@@ -120,3 +122,4 @@ func _on_player_died(player_id: int):
 	#Show result screen
 	var winner_id = 1 - player_id
 	print("Winner: Player ", winner_id)
+	emit_signal("game_over", winner_id)

@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://2jv37ruge78"]
 
-[ext_resource type="Script" uid="uid://ywrcdxeq26xb" path="res://Scripts/main_menu.gd" id="1_28flt"]
+[ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_28flt"]
 [ext_resource type="Texture2D" uid="uid://c0rkwb7vi4nch" path="res://Assets/ui/main_menu/pixellab-remove-the-person--1761392256343.png" id="2_48xlc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_28flt"]
@@ -51,14 +51,15 @@ script = ExtResource("1_28flt")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
-anchors_preset = -1
+anchors_preset = 8
+anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -586.0
-offset_top = -327.0
-offset_right = 579.0
-offset_bottom = 334.0
+offset_left = -582.5
+offset_top = -330.5
+offset_right = 582.5
+offset_bottom = 330.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_28flt")
@@ -71,17 +72,13 @@ texture = ExtResource("2_48xlc")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -138.0
-offset_top = -26.0
-offset_right = 110.0
-offset_bottom = 267.60922
+offset_left = -124.0
+offset_right = 124.0
+offset_bottom = 293.60922
 grow_horizontal = 2
-grow_vertical = 2
 theme_override_constants/separation = 18
 
 [node name="Start_Button" type="Button" parent="VBoxContainer"]
@@ -133,23 +130,20 @@ text = "Exit"
 [node name="Label" type="Label" parent="."]
 texture_filter = 1
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -485.0
-offset_top = -340.0
-offset_right = 486.0
-offset_bottom = -193.0
+offset_left = -482.0
+offset_top = -353.0
+offset_right = 489.0
+offset_bottom = -206.0
 grow_horizontal = 2
-grow_vertical = 2
 theme_override_colors/font_shadow_color = Color(0.47058824, 0, 0, 1)
 theme_override_constants/line_spacing = 3
 theme_override_constants/shadow_offset_y = 7
 theme_override_constants/outline_size = 4
 theme_override_font_sizes/font_size = 87
-text = "Game Name "
+text = "Rising Sun"
 horizontal_alignment = 1
 vertical_alignment = 1
 

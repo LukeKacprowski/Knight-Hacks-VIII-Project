@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://c3r43hrdy0wqp"]
 
-[ext_resource type="Script" uid="uid://5vh2fa37m3gf" path="res://Scripts/results.gd" id="1_r1how"]
+[ext_resource type="Script" path="res://Scripts/results.gd" id="1_r1how"]
 [ext_resource type="Texture2D" uid="uid://c0rkwb7vi4nch" path="res://Assets/ui/main_menu/pixellab-remove-the-person--1761392256343.png" id="2_3cjc3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a7aex"]
@@ -81,7 +81,7 @@ text = "Results "
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="Panel"]
+[node name="play_again_button" type="Button" parent="Panel"]
 layout_mode = 0
 offset_left = 448.0
 offset_top = 440.0
@@ -99,7 +99,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_i07ch")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_fhw0o")
 text = "Play Again"
 
-[node name="Button2" type="Button" parent="Panel"]
+[node name="main_menu_button" type="Button" parent="Panel"]
 layout_mode = 0
 offset_left = 452.0
 offset_top = 306.0

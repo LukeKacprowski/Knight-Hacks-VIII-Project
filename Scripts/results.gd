@@ -1,30 +1,33 @@
 extends Control
 
 @onready var label: Label = $Panel/Label
-@onready var button: Button = $Panel/Button
-@onready var button_2: Button = $Panel/Button2
+@onready var play_again_button: Button = $Panel/play_again_button
+@onready var main_menu_button: Button = $Panel/main_menu_button
 
+var _winner_id: int = -1
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	Engine.time_scale = 1.0
-	get_tree().paused=false
+	var _play_again_func := func() -> void:
+		GameManager.goto("gameplay")
 	
-	var winner: int = GameManager.last_run.get("winner",0)
+	var _main_menu_func := func() -> void:
+		GameManager.goto("main_menu")
 	
-	match winner:
+	if _winner_id != -1:
+		_apply_winner_text(_winner_id)
+
+	# Connect button actions
+	play_again_button.pressed.connect(_play_again_func)
+	main_menu_button.pressed.connect(_main_menu_func)
+
+func set_winner(winner_id: int) -> void:
+	_winner_id = winner_id
+	if is_inside_tree():
+		_apply_winner_text(winner_id)
+
+func _apply_winner_text(winner_id: int) -> void:
+	match winner_id:
 		1:
-			label.text="Player 1 Wins!"
+			label.text = "Player 1 Wins!"
 		2:
-			label.text="Player 2 Wins!"
-	
-	#Connect button actions
-	button.pressed.connect(_on_play_again_pressed)
-	button_2.pressed.connect(_on_main_menu_pressed)
-
-
-func _on_play_again_pressed() -> void:
-	GameManager.restart_last_level()
-
-func _on_main_menu_pressed() -> void:
-	GameManager.goto("main_menu")
+			label.text = "Player 2 Wins!"
