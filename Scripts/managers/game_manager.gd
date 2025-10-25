@@ -11,8 +11,7 @@ const SCENE_PATHS := {
 	"results": "res://Scenes/results.tscn",
 }
 
-#buffer for global handoff
-var _pending_winner: int = -1
+
 # This function swichtes to a new scene 
 func goto(scene_name: String, load_async := false) -> void:
 	if !SCENE_PATHS.has(scene_name):
@@ -74,53 +73,9 @@ func _swap_scene(packed_scene: PackedScene, scene_name: String) -> void:
 		return
 	emit_signal("screen_changed", scene_name)
 	
-	# after the new root, gather if need
-	var new_root: Node = get_tree().current_scene
-	
-	# ifgame play loaded, try to connect to its game over siganl 
-	if scene_name == "gameplay" and new_root:
-		_hook_gameplay_signal(new_root)
-	
-	# we load results for the winner that is waiting 
-	if scene_name == "results" and new_root and _pending_winner != -1:
-		call_deferred("_deliver_winner_to_results", new_root, _pending_winner)
-	
-func _hook_gameplay_signal(root: Node) -> void:
-	if root.has_signal("game_over"):
-		if !root.is_connected("game_over", Callable(self, "_on_game_over")):
-			root.connect("game_over", Callable(self, "_on_game_over"),CONNECT_ONE_SHOT) 
-		return
-	if root.has_node("GameLogic"):
-		var logic: Node = root.get_node("GameLogic")
-		var emitter: Node = _find_node_with_signal(logic, "game_over")
-		if emitter:
-			if !emitter.is_connected("game_over", Callable(self, "_on_game_over")):
-				emitter.connect("game_over", Callable(self, "_on_game_over"), CONNECT_ONE_SHOT)
-			return
-			
-	var any_emitter: Node = _find_node_with_signal(root, "game_over")
-	if any_emitter and !any_emitter.is_connected("game_over", Callable(self, "_on_game_over")):
-		any_emitter.connect("game_over", Callable(self, "_on_game_over"), CONNECT_ONE_SHOT)
-		# DFS search for node exposing a specific signal
-func _find_node_with_signal(start: Node, signal_name: String) -> Node:
-	if start.has_signal(signal_name):
-		return start
-	for child in start.get_children():
-		if child is Node:
-			var found: Node = _find_node_with_signal(child, signal_name)
-			if found:
-				return found
-	return null
+var _winner: int = -1
 
-# Receives winner id from gameplay, then moves to results
-func _on_game_over(winner_id: int) -> void:
-	_pending_winner = winner_id
-	goto("results")
-
- 
-
-# Called after results is live; hands off the winner and clears buffer
-func _deliver_winner_to_results(results_root: Node, winner_id: int) -> void:
-	if results_root and results_root.has_method("set_winner"):
-		results_root.call("set_winner", winner_id)
-	_pending_winner = -1
+func set_winner(id:int)->void:
+	_winner = id
+func get_winner() -> int:
+	return _winner

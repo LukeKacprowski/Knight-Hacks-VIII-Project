@@ -122,4 +122,6 @@ func _on_player_died(player_id: int):
 	#Show result screen
 	var winner_id = 1 - player_id
 	print("Winner: Player ", winner_id)
+	GameManager.set_winner(winner_id)
+	GameManager.goto("results")
 	emit_signal("game_over", winner_id)

@@ -1,10 +1,10 @@
 [gd_scene load_steps=8 format=3 uid="uid://2jv37ruge78"]
 
-[ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_28flt"]
+[ext_resource type="Script" uid="uid://ywrcdxeq26xb" path="res://Scripts/main_menu.gd" id="1_28flt"]
 [ext_resource type="Texture2D" uid="uid://c0rkwb7vi4nch" path="res://Assets/ui/main_menu/pixellab-remove-the-person--1761392256343.png" id="2_48xlc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_28flt"]
-bg_color = Color(0.031654898, 0.0316549, 0.03165488, 1)
+bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_erv1k"]
 bg_color = Color(0.47079715, 0, 0, 1)

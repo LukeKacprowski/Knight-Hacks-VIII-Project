@@ -4,30 +4,19 @@ extends Control
 @onready var play_again_button: Button = $Panel/play_again_button
 @onready var main_menu_button: Button = $Panel/main_menu_button
 
-var _winner_id: int = -1
 
 func _ready() -> void:
-	var _play_again_func := func() -> void:
-		GameManager.goto("gameplay")
-	
-	var _main_menu_func := func() -> void:
-		GameManager.goto("main_menu")
-	
-	if _winner_id != -1:
-		_apply_winner_text(_winner_id)
+	# Button handlers (assign lambdas to vars first if your version requires it)
+	var _play_again := func() -> void: GameManager.goto("gameplay")
+	var _main_menu  := func() -> void: GameManager.goto("main_menu")
+	play_again_button.pressed.connect(_play_again)
+	main_menu_button.pressed.connect(_main_menu)
 
-	# Connect button actions
-	play_again_button.pressed.connect(_play_again_func)
-	main_menu_button.pressed.connect(_main_menu_func)
+	# Pull winner from GameManager and update label
+	var w: int = GameManager.get_winner()
+	_update_result_label(w)
 
-func set_winner(winner_id: int) -> void:
-	_winner_id = winner_id
-	if is_inside_tree():
-		_apply_winner_text(winner_id)
-
-func _apply_winner_text(winner_id: int) -> void:
+func _update_result_label(winner_id: int) -> void:
 	match winner_id:
-		1:
-			label.text = "Player 1 Wins!"
-		2:
-			label.text = "Player 2 Wins!"
+		0: label.text = "Player 1 Wins!"
+		1: label.text = "Player 2 Wins!"
