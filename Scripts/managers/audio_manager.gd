@@ -12,7 +12,12 @@ extends Node
 @onready var sword_clash_two = AudioStreamPlayer.new()
 @onready var sword_clash_three = AudioStreamPlayer.new()
 
+@onready var hit_sound_one = AudioStreamPlayer.new()
+@onready var hit_sound_two= AudioStreamPlayer.new()
+@onready var hit_sound_three=AudioStreamPlayer.new()
 
+@onready var blood_splash=AudioStreamPlayer.new()
+@onready var foot_step = AudioStreamPlayer.new()
 
 func _ready():
 	randomize()
@@ -27,6 +32,14 @@ func _ready():
 	add_child(sword_clash_one)
 	add_child(sword_clash_two)
 	add_child(sword_clash_three)
+	
+	add_child(hit_sound_one)
+	add_child(hit_sound_two)
+	add_child(hit_sound_three)
+	
+	add_child(blood_splash)
+	add_child(foot_step)
+	
 
 
 
@@ -41,15 +54,30 @@ func _ready():
 	sword_clash_two.stream = load("res://Assets/audio/sfx/Slashnew2.mp3")
 	sword_clash_three.stream = load("res://Assets/audio/sfx/Slashnew3.mp3")
 	
+	#playerhit
+	hit_sound_one.stream =load("res://Assets/audio/sfx/hitsound1.mp3")
+	hit_sound_two.stream = load("res://Assets/audio/sfx/hitsound2.mp3")
+	hit_sound_three.stream = load("res://Assets/audio/sfx/hitsound3.mp3")
+	
+	#other sfx added
+	blood_splash.stream= load("res://Assets/audio/sfx/bloodsplash.mp3")
+	foot_step.stream= load("res://Assets/audio/sfx/footstep.mp3")
+	
 	#Load Backgroundmusic
 	menu_music.stream = load("res://Assets/audio/music/Menumusic.mp3")
 	game_music.stream = load("res://Assets/audio/music/gameinmusic.mp3")
 	
 	menu_music.stream.set_loop(true)
 	game_music.stream.set_loop(true)
+	
+	# Adjust volume
+	blood_splash.volume_db = 6
+	foot_step.volume_db = -2   
 
-# --- Trigger Functions ---
 
+
+
+#Functions
 func play_player1_win():
 	if player1_win_sound:
 		player1_win_sound.play()
@@ -60,10 +88,19 @@ func play_player2_win():
 
 func play_player_hit():
 	if player_hit_sound:
-		player_hit_sound.play()
+		foot_step.play()
+		blood_splash.play()
+		var rn = randi_range(0, 2)
+		if rn == 0:
+			hit_sound_one.play()
+		elif rn==1:
+			hit_sound_two.play()
+		elif rn==2:
+			hit_sound_three.play()
 
 func play_sword_clash():
 	if sword_clash_sound:
+		foot_step.play()
 		var rn = randi_range(0, 1)
 		if rn == 0:
 			sword_clash_one.play()
