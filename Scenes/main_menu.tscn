@@ -5,6 +5,13 @@
 [ext_resource type="Texture2D" uid="uid://c0rkwb7vi4nch" path="res://Assets/ui/main_menu/pixellab-remove-the-person--1761392256343.png" id="2_48xlc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ce3w2"]
+bg_color = Color(0.47058824, 0, 0, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(1, 0.21267998, 0.15969571, 0.6)
+shadow_offset = Vector2(0, 4)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_erv1k"]
 bg_color = Color(0.47079715, 0, 0, 1)
@@ -36,15 +43,6 @@ shadow_size = 8
 shadow_offset = Vector2(0, 4)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_erv1k"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ce3w2"]
-bg_color = Color(0.47058824, 0, 0, 1)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
-shadow_color = Color(1, 0.21267998, 0.15969571, 0.6)
-shadow_offset = Vector2(0, 4)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n45e2"]
 bg_color = Color(0.37823164, 6.0464254e-07, 4.813075e-08, 1)
@@ -98,13 +96,13 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ce3w2")
 
 [node name="GameplayScene" type="Sprite2D" parent="Panel"]
-position = Vector2(584, 334.5)
+position = Vector2(581.5, 326.5)
 scale = Vector2(3.6281252, 3.7333333)
 texture = ExtResource("2_1ehe0")
 
 [node name="PixellabRemoveThePerson1761392256343" type="Sprite2D" parent="Panel"]
 texture_filter = 1
-position = Vector2(574.00006, 353.06247)
+position = Vector2(581.50006, 366.50003)
 scale = Vector2(5.561524, 5.561524)
 texture = ExtResource("2_48xlc")
 metadata/_edit_lock_ = true
@@ -173,10 +171,10 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -482.0
-offset_top = -353.0
-offset_right = 489.0
-offset_bottom = -206.0
+offset_left = -489.0
+offset_top = -356.0
+offset_right = 482.0
+offset_bottom = -209.0
 grow_horizontal = 2
 theme_override_colors/font_shadow_color = Color(0.47058824, 0, 0, 1)
 theme_override_constants/line_spacing = 3
