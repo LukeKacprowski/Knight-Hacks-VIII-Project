@@ -206,3 +206,4 @@ metadata/_edit_lock_ = true
 [connection signal="pressed" from="VBoxContainer/Start_Button" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="VBoxContainer/How_To_Play" to="." method="_on_how_to_play_pressed"]
 [connection signal="pressed" from="VBoxContainer/Button3" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="Stats" to="." method="_on_stats_pressed"]
