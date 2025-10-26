@@ -1,10 +1,17 @@
-[gd_scene load_steps=12 format=3 uid="uid://2jv37ruge78"]
+[gd_scene load_steps=11 format=3 uid="uid://2jv37ruge78"]
 
-[ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_28flt"]
+[ext_resource type="Script" uid="uid://ywrcdxeq26xb" path="res://Scripts/main_menu.gd" id="1_28flt"]
 [ext_resource type="Texture2D" uid="uid://coqeatj3jlv5e" path="res://Assets/sprites/gameplay/GameplayScene.png" id="2_1ehe0"]
 [ext_resource type="Texture2D" uid="uid://c0rkwb7vi4nch" path="res://Assets/ui/main_menu/pixellab-remove-the-person--1761392256343.png" id="2_48xlc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ce3w2"]
+bg_color = Color(0.47058824, 0, 0, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(1, 0.21267998, 0.15969571, 0.6)
+shadow_offset = Vector2(0, 4)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_erv1k"]
 bg_color = Color(0.47079715, 0, 0, 1)
@@ -37,15 +44,6 @@ shadow_offset = Vector2(0, 4)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_erv1k"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ce3w2"]
-bg_color = Color(0.47058824, 0, 0, 1)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
-shadow_color = Color(1, 0.21267998, 0.15969571, 0.6)
-shadow_offset = Vector2(0, 4)
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n45e2"]
 bg_color = Color(0.37823164, 6.0464254e-07, 4.813075e-08, 1)
 corner_radius_top_left = 16
@@ -65,8 +63,6 @@ corner_radius_bottom_left = 16
 shadow_color = Color(1, 0.21267998, 0.15969571, 0.6)
 shadow_size = 8
 shadow_offset = Vector2(0, 4)
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cp0ys"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -203,7 +199,6 @@ theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_ce3w2")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_n45e2")
 theme_override_styles/hover = SubResource("StyleBoxFlat_opfnp")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_cp0ys")
 text = "Stats"
 metadata/_edit_lock_ = true
 
