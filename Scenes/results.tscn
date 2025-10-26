@@ -1,8 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://c3r43hrdy0wqp"]
+[gd_scene load_steps=8 format=3 uid="uid://c3r43hrdy0wqp"]
 
 [ext_resource type="Script" uid="uid://5vh2fa37m3gf" path="res://Scripts/results.gd" id="1_r1how"]
 [ext_resource type="Texture2D" uid="uid://c0rkwb7vi4nch" path="res://Assets/ui/main_menu/pixellab-remove-the-person--1761392256343.png" id="2_3cjc3"]
-[ext_resource type="Texture2D" uid="uid://coqeatj3jlv5e" path="res://Assets/sprites/gameplay/GameplayScene.png" id="2_3iro3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a7aex"]
 bg_color = Color(0, 0, 0, 1)
@@ -55,11 +54,6 @@ offset_top = 3.0
 offset_right = 1154.0
 offset_bottom = 641.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_a7aex")
-
-[node name="GameplayScene" type="Sprite2D" parent="Panel"]
-position = Vector2(577.5, 318)
-scale = Vector2(3.596875, 3.5444446)
-texture = ExtResource("2_3iro3")
 
 [node name="main_menu_button" type="Button" parent="Panel"]
 layout_mode = 0
