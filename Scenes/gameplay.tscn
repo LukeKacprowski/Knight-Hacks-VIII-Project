@@ -1,4 +1,4 @@
-[gd_scene load_steps=91 format=3 uid="uid://ddqooonv3q8n7"]
+[gd_scene load_steps=95 format=3 uid="uid://ddqooonv3q8n7"]
 
 [ext_resource type="Script" uid="uid://dqoea6dokts24" path="res://Scripts/controllers/camera_controller.gd" id="1_r8bcl"]
 [ext_resource type="Script" path="res://Scripts/controllers/gameplay_controller.gd" id="1_rlidi"]
@@ -13,6 +13,10 @@
 [ext_resource type="Texture2D" uid="uid://cjno2nnge1idt" path="res://Assets/ui/timerUI/TimerBorder.png" id="9_5h7oy"]
 [ext_resource type="Script" uid="uid://bittlp5o23wnb" path="res://Scripts/ui/timer.gd" id="10_5h7oy"]
 [ext_resource type="Script" uid="uid://usl6w0f3h1mh" path="res://Scripts/ui/player_hud.gd" id="12_rg35f"]
+[ext_resource type="Texture2D" uid="uid://drb0v0of86tns" path="res://Assets/ui/Player1HealthBarProgress.png" id="13_ra47u"]
+[ext_resource type="Texture2D" uid="uid://dbsklpq5imeak" path="res://Assets/ui/Player1HealthBarOver.png" id="14_r5xtw"]
+[ext_resource type="Texture2D" uid="uid://2e2cyve68wxj" path="res://Assets/ui/Player2HealthBarProgress.png" id="16_decfu"]
+[ext_resource type="Texture2D" uid="uid://w2aewcwpsg05" path="res://Assets/ui/Player2HealthBarOver.png" id="17_p1ih8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ra47u"]
 atlas = ExtResource("3_jb71e")
@@ -635,21 +639,6 @@ metadata/_edit_lock_ = true
 [node name="Player1HUD" type="Control" parent="UI"]
 layout_mode = 3
 anchors_preset = 0
-script = ExtResource("12_rg35f")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/Player1HUD"]
-layout_mode = 1
-offset_left = 10.0
-offset_top = 10.0
-offset_right = 20.0
-offset_bottom = 37.0
-metadata/_edit_use_anchors_ = true
-
-[node name="PlayerLabel" type="Label" parent="UI/Player1HUD/VBoxContainer"]
-layout_mode = 2
-
-[node name="LivesContainer" type="HBoxContainer" parent="UI/Player1HUD/VBoxContainer"]
-layout_mode = 2
 
 [node name="Letter Container" type="HBoxContainer" parent="UI/Player1HUD"]
 layout_direction = 2
@@ -669,20 +658,6 @@ offset_left = 255.0
 offset_top = 260.0
 offset_right = 295.0
 offset_bottom = 300.0
-script = ExtResource("12_rg35f")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/Player2HUD"]
-layout_mode = 0
-offset_left = 775.0
-offset_top = -259.0
-offset_right = 776.0
-offset_bottom = -232.0
-
-[node name="PlayerLabel" type="Label" parent="UI/Player2HUD/VBoxContainer"]
-layout_mode = 2
-
-[node name="LivesContainer" type="HBoxContainer" parent="UI/Player2HUD/VBoxContainer"]
-layout_mode = 2
 
 [node name="Letter Container" type="HBoxContainer" parent="UI/Player2HUD"]
 texture_filter = 1
@@ -702,6 +677,31 @@ grow_vertical = 2
 scale = Vector2(4, 4)
 theme_override_constants/separation = 20
 metadata/_edit_lock_ = true
+
+[node name="Player1HUD2" type="TextureProgressBar" parent="UI"]
+offset_left = 232.0
+offset_top = 4.0
+offset_right = 360.0
+offset_bottom = 68.0
+scale = Vector2(3, 3)
+texture_under = ExtResource("13_ra47u")
+texture_over = ExtResource("14_r5xtw")
+texture_progress = ExtResource("13_ra47u")
+tint_under = Color(1, 1, 1, 0.24313726)
+script = ExtResource("12_rg35f")
+
+[node name="Player2HUD2" type="TextureProgressBar" parent="UI"]
+offset_left = 536.0
+offset_top = 4.0
+offset_right = 664.0
+offset_bottom = 68.0
+scale = Vector2(3, 3)
+fill_mode = 1
+texture_under = ExtResource("16_decfu")
+texture_over = ExtResource("17_p1ih8")
+texture_progress = ExtResource("16_decfu")
+tint_under = Color(1, 1, 1, 0.24313726)
+script = ExtResource("12_rg35f")
 
 [node name="Audio" type="Node" parent="."]
 
