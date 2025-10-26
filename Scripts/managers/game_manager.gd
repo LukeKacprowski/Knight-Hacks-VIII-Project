@@ -9,6 +9,7 @@ const SCENE_PATHS := {
 	"how_to_play2": "res://Scenes/how_to_play2.tscn",
 	"gameplay":    "res://Scenes/gameplay.tscn",
 	"results": "res://Scenes/results.tscn",
+	"Stats": "res://Scenes/Stats.tscn",
 }
 
 

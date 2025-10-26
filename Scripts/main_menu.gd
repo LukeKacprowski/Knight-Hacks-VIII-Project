@@ -11,3 +11,7 @@ func _on_how_to_play_pressed() -> void:
 # Quits the game 
 func _on_exit_pressed() -> void:
 	get_tree().quit()
+
+
+func _on_stats_pressed() -> void:
+	GameManager.goto("Stats")
