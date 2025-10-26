@@ -1,10 +1,10 @@
 extends Node
 
-# --- Track statistics for each player separately ---
+# Dictionary for all stats
 var stats := {
 	"total_games": 0,
 	"total_rounds": 0,
-	"round_counter": 0,  # current round number
+	"round_counter": 0,  
 	"longest_rounds":0,
 
 	"Player1": {
@@ -19,12 +19,12 @@ var stats := {
 	}
 }
 
-# --- Called when a new round starts ---
+# Calls when a new round starts
 func start_new_round():
 	stats["round_counter"] += 1
 	print("Starting Round %d" % stats["round_counter"])
 
-# --- Called when a player wins a round ---
+#Calls when a player wins a round
 func add_round(winner_id: int):
 	var player_key = "Player1" if winner_id == 0 else "Player2"
 	stats["total_rounds"] += 1
@@ -32,7 +32,7 @@ func add_round(winner_id: int):
 	print("%s won round %d" % [player_key, stats["round_counter"]])
 	print("Round stats updated:", stats)
 
-# --- Called when a full game ends ---
+#Calls when a full game ends
 func add_game(winner_id: int, flawless: bool):
 	var player_key = "Player1" if winner_id == 0 else "Player2"
 	stats["total_games"] += 1
@@ -52,6 +52,6 @@ func add_game(winner_id: int, flawless: bool):
 	print("Game stats updated:", stats)
 
 
-# Return stats for UI or saving
+# Return stats for test andfor ui labels
 func get_stats() -> Dictionary:
 	return stats

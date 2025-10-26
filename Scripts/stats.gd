@@ -1,5 +1,5 @@
 extends  Node
-
+#Labels
 @onready var total_games: Label = $VBoxContainer/total_games
 @onready var total_round_wins: Label = $"VBoxContainer/total_round wins"
 @onready var round_count: Label = $VBoxContainer/Round_count
@@ -11,6 +11,7 @@ extends  Node
 @onready var p_2_flawless: Label = $VBoxContainer/P2_flawless
 
 func _ready():
+	#keps stats updated with call
 	update_stats()
 
 func update_stats():
@@ -26,11 +27,11 @@ func update_stats():
 	p_1_rw.text = "P1 Round Wins: " + str(s["Player1"]["round_wins"])
 	p_1_flawless.text = "P1 Flawless: " + str(s["Player1"]["flawless_victories"])
 
-	# ✅ Player 2 stats
+	#Player 2 stats
 	p_2_gw.text = "P2 Game Wins: " + str(s["Player2"]["game_wins"])
 	p_2_rw.text = "P2 Round Wins: " + str(s["Player2"]["round_wins"])
 	p_2_flawless.text = "P2 Flawless: " + str(s["Player2"]["flawless_victories"])
 
-
+#sends back to main menu from stats if pressed
 func _on_main_menu_pressed() -> void:
 	GameManager.goto("main_menu")

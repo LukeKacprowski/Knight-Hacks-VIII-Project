@@ -6,7 +6,7 @@ extends Control
 
 
 func _ready() -> void:
-	# Button handlers (assign lambdas to vars first if your version requires it)
+	#Connect button signals using local lambdas for compatibility
 	var _play_again := func() -> void: GameManager.goto("gameplay")
 	var _main_menu  := func() -> void: GameManager.goto("main_menu")
 	play_again_button.pressed.connect(_play_again)

@@ -20,6 +20,7 @@ extends Node
 @onready var foot_step = AudioStreamPlayer.new()
 
 func _ready():
+	#needed for my random calls
 	randomize()
 	# Add all to scene
 	add_child(player1_win_sound)
@@ -43,7 +44,7 @@ func _ready():
 
 
 
-	# Load your SFX
+	# Load my SFX
 	player1_win_sound.stream = load("res://Assets/audio/sfx/Player1wins.mp3")
 	player2_win_sound.stream = load("res://Assets/audio/sfx/Player2wins.mp3")
 	player_hit_sound.stream = load("res://Assets/audio/sfx/Playerhit.mp3")
@@ -86,6 +87,7 @@ func play_player2_win():
 	if player2_win_sound:
 		player2_win_sound.play()
 
+#if statement with random number generator to generate random sound
 func play_player_hit():
 	if player_hit_sound:
 		foot_step.play()
@@ -98,6 +100,7 @@ func play_player_hit():
 		elif rn==2:
 			hit_sound_three.play()
 
+#if statement with random number generator to generate random sound
 func play_sword_clash():
 	if sword_clash_sound:
 		foot_step.play()
