@@ -8,8 +8,8 @@ extends Node
 @onready var timer = $UI/Timer
 @onready var p1_letter_container = $"UI/Player1HUD/Letter Container"
 @onready var p2_letter_container = $"UI/Player2HUD/Letter Container"
-@onready var p1_hud = $UI/Player1HUD
-@onready var p2_hud = $UI/Player2HUD
+@onready var p1_hud = $UI/Player1HUD2
+@onready var p2_hud = $UI/Player2HUD2
 @onready var cameras: Camera2D = $Camera2D
 
 # Optional: assign a PackedScene (e.g., HitBurst.tscn with a GPUParticles2D one_shot) in the Inspector.
@@ -30,9 +30,9 @@ func _ready() -> void:
 	
 	# Set up player HUDs - they will automatically connect to player data
 	if p1_hud:
-		p1_hud.setup(0, "Player 1", 3)
+		p1_hud.setup(0, 3)  # Player 0, 3 lives
 	if p2_hud:
-		p2_hud.setup(1, "Player 2", 3)
+		p2_hud.setup(1, 3)  # Player 1, 3 lives
 	
 	# Connect RoundController signals
 	round_controller.player_key_pressed.connect(_on_player_key_pressed)
@@ -119,6 +119,8 @@ func _on_player1_wins_round():
 	InputManager.end_round()
 	StatsManager.add_round(0)
 	
+	# Play win animation
+	
 	
 	player_data_manager.apply_damage(1)
 
@@ -129,7 +131,7 @@ func _on_player2_wins_round():
 	StatsManager.add_round(1)
 	
 	# Play win animation
-	#await animation_controller.play_player_win_sequence(1)
+	
 	
 	player_data_manager.apply_damage(0)
 
@@ -141,7 +143,7 @@ func _on_player_key_pressed(player_id: int, correct: bool):
 		else:
 			print("P1 incorrect key")
 			letter_display_manager.play_letter_animation(0, false)
-			#cameras.trigger_shake(3.0)
+			cameras.trigger_shake()
 	else:
 		if correct:
 			print("P2 correct key")
@@ -149,24 +151,21 @@ func _on_player_key_pressed(player_id: int, correct: bool):
 		else:
 			print("P2 incorrect key")
 			letter_display_manager.play_letter_animation(1, false)
-			#cameras.trigger_shake(3.0)
+			cameras.trigger_shake()
 
 func _on_player_damaged(player_id: int, lives_left: int):
 	print("Player ", player_id + 1, " damaged. Lives left: ", lives_left)
 	AudioManager.play_player_hit()
 	
 	# The HUD automatically updates via PlayerData signal connections
-	# Wait for the heart loss animation to complete (approximately 0.6s)
-	await get_tree().create_timer(0.6).timeout
+	# Wait for the health bar animation to complete (approximately 0.4s)
+	await get_tree().create_timer(0.4).timeout
 	
 	if lives_left > 0:
 		start_new_round(new_round_time)
 
 func _on_player_died(player_id: int):
 	print("Player ", player_id + 1, " died!")
-	
-	# Play game over animation
-	#await animation_controller.play_game_over_animation(player_id)
 	
 	var winner_id = 1 - player_id
 	
@@ -187,7 +186,9 @@ func _on_player_died(player_id: int):
 	emit_signal("game_over", winner_id)
 
 
-#Particles
+# =========================
+# Collision particle helpers
+# =========================
 
 func _spawn_collision_particles_from_players(intensity: float = 1.0) -> void:
 	var p1_pos := _get_player_position(0)
