@@ -1,6 +1,7 @@
 extends Node
+class_name PlayerDataManager
 
-signal player_damaged(player_id: int, lives_remaining: int)
+signal player_damaged(player_id: int, lives_left: int)
 signal player_died(player_id: int)
 
 @onready var player1_data = $Player1Data

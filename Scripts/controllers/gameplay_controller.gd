@@ -54,6 +54,7 @@ func start_new_round(round_time: float):
 	round_controller.start_round(round_time)
 	InputManager.reset_round()
 	timer.start_timer(round_time)
+	StatsManager.start_new_round()
 
 func _on_round_timer_updated(round_time: float):
 	new_round_time = round_time
@@ -84,6 +85,7 @@ func _on_both_players_failed():
 func _on_player1_wins_round():
 	print("Player 1 wins round!")
 	InputManager.end_round()
+	StatsManager.add_round(0)
 	
 	await get_tree().create_timer(0.5).timeout
 	
@@ -92,6 +94,7 @@ func _on_player1_wins_round():
 func _on_player2_wins_round():
 	print("Player 2 wins round!")
 	InputManager.end_round()
+	StatsManager.add_round(1)
 	
 	await get_tree().create_timer(0.5).timeout
 	
@@ -136,6 +139,12 @@ func _on_player_died(player_id: int):
 	print("Player ", player_id + 1, " died!")
 	
 	var winner_id = 1 - player_id
+	
+	var winner_lives = player_data_manager.get_player_lives(winner_id)
+	var flawless = (winner_lives == 3)
+	
+	StatsManager.add_game(winner_id, flawless)
+	
 	if (winner_id + 1 == 1):
 		AudioManager.play_player1_win()
 	if (winner_id + 1 == 2):
@@ -144,4 +153,6 @@ func _on_player_died(player_id: int):
 	print("Winner: Player ", winner_id + 1)
 	GameManager.set_winner(winner_id)
 	GameManager.goto("results")
+	
+	
 	emit_signal("game_over", winner_id)
