@@ -1,6 +1,18 @@
-[gd_scene load_steps=8 format=3 uid="uid://sfikasdebsy"]
+[gd_scene load_steps=19 format=3 uid="uid://sfikasdebsy"]
 
 [ext_resource type="Script" uid="uid://isyh0kpdyi1f" path="res://Scripts/how_to_play_2.gd" id="1_1jopo"]
+[ext_resource type="SpriteFrames" uid="uid://c0c1emvduqh0" path="res://Assets/ui/letters/LetterE.tres" id="2_x8sx1"]
+[ext_resource type="SpriteFrames" uid="uid://btgetbup86fsx" path="res://Assets/ui/letters/LetterQ.tres" id="3_diwrk"]
+[ext_resource type="SpriteFrames" uid="uid://b6wmuaa1c0g6g" path="res://Assets/ui/letters/LetterA.tres" id="4_gomuo"]
+[ext_resource type="SpriteFrames" uid="uid://dbc2gahhr03as" path="res://Assets/ui/letters/LetterS.tres" id="5_181gy"]
+[ext_resource type="SpriteFrames" uid="uid://cgvvk0kbb5en0" path="res://Assets/ui/letters/LetterD.tres" id="6_ky1ti"]
+[ext_resource type="SpriteFrames" uid="uid://drj0uhbqjfcli" path="res://Assets/ui/letters/LetterW.tres" id="7_i4ovj"]
+[ext_resource type="SpriteFrames" uid="uid://ceryb3xyuvnw6" path="res://Assets/ui/letters/LetterO.tres" id="8_meehl"]
+[ext_resource type="SpriteFrames" uid="uid://buib56ahw2ium" path="res://Assets/ui/letters/LetterU.tres" id="9_1th56"]
+[ext_resource type="SpriteFrames" uid="uid://ny7gypg7u2ro" path="res://Assets/ui/letters/LetterJ.tres" id="10_o1i6f"]
+[ext_resource type="SpriteFrames" uid="uid://dhp5epbixo7ov" path="res://Assets/ui/letters/LetterK.tres" id="11_2ko8f"]
+[ext_resource type="SpriteFrames" uid="uid://dbe0bdky1iy6o" path="res://Assets/ui/letters/LetterL.tres" id="12_j0oey"]
+[ext_resource type="SpriteFrames" uid="uid://cn0kolnejamuk" path="res://Assets/ui/letters/LetterI.tres" id="13_bcwnv"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n3a0l"]
 bg_color = Color(0.031654898, 0.0316549, 0.03165488, 1)
@@ -35,8 +47,6 @@ shadow_size = 8
 shadow_offset = Vector2(0, 4)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_u0s27"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1jopo"]
 
 [node name="HowToPlay2" type="Control"]
 layout_mode = 3
@@ -153,14 +163,57 @@ text = "Player 1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ItemList" type="ItemList" parent="player 1 - keys"]
+[node name="GridContainer" type="GridContainer" parent="player 1 - keys"]
+texture_filter = 1
 layout_mode = 0
-offset_left = -67.0
-offset_top = 87.0
-offset_right = 366.0
-offset_bottom = 292.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_1jopo")
-max_columns = 3
+offset_left = 8.0
+offset_top = 3.0
+offset_right = 212.0
+offset_bottom = 60.0
+theme_override_constants/h_separation = 6
+theme_override_constants/v_separation = 6
+
+[node name="E-key" type="AnimatedSprite2D" parent="player 1 - keys/GridContainer"]
+texture_filter = 1
+position = Vector2(168.5, 144)
+scale = Vector2(3.874998, 3.5833328)
+sprite_frames = ExtResource("2_x8sx1")
+animation = &"idle"
+
+[node name="Q-key" type="AnimatedSprite2D" parent="player 1 - keys/GridContainer"]
+texture_filter = 1
+position = Vector2(45.5, 142)
+scale = Vector2(4.208333, 3.7499993)
+sprite_frames = ExtResource("3_diwrk")
+animation = &"idle"
+
+[node name="A-key" type="AnimatedSprite2D" parent="player 1 - keys/GridContainer"]
+texture_filter = 1
+position = Vector2(71.50001, 195.50002)
+scale = Vector2(4.041666, 3.5416677)
+sprite_frames = ExtResource("4_gomuo")
+animation = &"idle"
+
+[node name="S-key" type="AnimatedSprite2D" parent="player 1 - keys/GridContainer"]
+texture_filter = 1
+position = Vector2(131, 198)
+scale = Vector2(3.8333342, 3.2499995)
+sprite_frames = ExtResource("5_181gy")
+animation = &"idle"
+
+[node name="D-key" type="AnimatedSprite2D" parent="player 1 - keys/GridContainer"]
+texture_filter = 1
+position = Vector2(193, 199)
+scale = Vector2(4.000001, 3.208333)
+sprite_frames = ExtResource("6_ky1ti")
+animation = &"idle"
+
+[node name="W-key" type="AnimatedSprite2D" parent="player 1 - keys/GridContainer"]
+texture_filter = 1
+position = Vector2(107, 142.5)
+scale = Vector2(3.916667, 3.7083328)
+sprite_frames = ExtResource("7_i4ovj")
+animation = &"idle"
 
 [node name="player 1 - keys2" type="Label" parent="."]
 layout_mode = 0
@@ -173,13 +226,57 @@ text = "Player 2"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ItemList2" type="ItemList" parent="player 1 - keys2"]
+[node name="GridContainer" type="GridContainer" parent="player 1 - keys2"]
+texture_filter = 1
 layout_mode = 0
-offset_left = -85.0
-offset_top = 82.0
-offset_right = 348.0
-offset_bottom = 287.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_1jopo")
+offset_left = 8.0
+offset_top = 3.0
+offset_right = 212.0
+offset_bottom = 60.0
+theme_override_constants/h_separation = 6
+theme_override_constants/v_separation = 6
+
+[node name="O-key" type="AnimatedSprite2D" parent="player 1 - keys2/GridContainer"]
+texture_filter = 1
+position = Vector2(168.5, 144)
+scale = Vector2(3.874998, 3.5833328)
+sprite_frames = ExtResource("8_meehl")
+animation = &"idle"
+
+[node name="U-key" type="AnimatedSprite2D" parent="player 1 - keys2/GridContainer"]
+texture_filter = 1
+position = Vector2(45.5, 142)
+scale = Vector2(4.208333, 3.7499993)
+sprite_frames = ExtResource("9_1th56")
+animation = &"idle"
+
+[node name="J-key" type="AnimatedSprite2D" parent="player 1 - keys2/GridContainer"]
+texture_filter = 1
+position = Vector2(71.50001, 195.50002)
+scale = Vector2(4.041666, 3.5416677)
+sprite_frames = ExtResource("10_o1i6f")
+animation = &"idle"
+
+[node name="K-key" type="AnimatedSprite2D" parent="player 1 - keys2/GridContainer"]
+texture_filter = 1
+position = Vector2(131, 198)
+scale = Vector2(3.8333342, 3.2499995)
+sprite_frames = ExtResource("11_2ko8f")
+animation = &"idle"
+
+[node name="L-key" type="AnimatedSprite2D" parent="player 1 - keys2/GridContainer"]
+texture_filter = 1
+position = Vector2(193, 199)
+scale = Vector2(4.000001, 3.208333)
+sprite_frames = ExtResource("12_j0oey")
+animation = &"idle"
+
+[node name="I-key" type="AnimatedSprite2D" parent="player 1 - keys2/GridContainer"]
+texture_filter = 1
+position = Vector2(107, 142.5)
+scale = Vector2(3.916667, 3.7083328)
+sprite_frames = ExtResource("13_bcwnv")
+animation = &"idle"
 
 [connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="Main_menu" to="." method="_on_main_menu_pressed"]
