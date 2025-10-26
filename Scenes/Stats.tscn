@@ -1,9 +1,40 @@
-[gd_scene load_steps=3 format=3 uid="uid://cje1abwdrcd0k"]
+[gd_scene load_steps=7 format=3 uid="uid://cje1abwdrcd0k"]
 
 [ext_resource type="Script" uid="uid://ch5djgu1t213e" path="res://Scripts/stats.gd" id="1_u72eg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u72eg"]
 bg_color = Color(0.0011974451, 0.0011974451, 0.0011974442, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vnsho"]
+bg_color = Color(0.47079715, 0, 0, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(1, 0.21267998, 0.15969571, 0.6)
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kgfbh"]
+bg_color = Color(0.37823164, 6.0464254e-07, 4.813075e-08, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(1, 0.21267998, 0.15969571, 0.6)
+shadow_size = 8
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lkg3v"]
+bg_color = Color(0.3764706, 0, 0, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(1, 0.21267998, 0.15969571, 0.6)
+shadow_size = 8
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bag5e"]
 
 [node name="Stats" type="Control"]
 layout_mode = 3
@@ -50,12 +81,31 @@ text = "Stats"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Main_menu" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 996.0
+offset_top = 30.0
+offset_right = 1117.0
+offset_bottom = 114.0
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_vnsho")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_kgfbh")
+theme_override_styles/hover = SubResource("StyleBoxFlat_lkg3v")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_bag5e")
+text = "Main
+Menu"
+
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 6.0
+offset_left = 7.0
 offset_top = 104.0
-offset_right = 1146.0
-offset_bottom = 331.0
+offset_right = 1147.0
+offset_bottom = 643.0
 theme_override_constants/separation = 28
 
 [node name="total_games" type="Label" parent="VBoxContainer"]
@@ -165,3 +215,5 @@ theme_override_font_sizes/font_size = 25
 text = "Results "
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[connection signal="pressed" from="Panel/Main_menu" to="." method="_on_main_menu_pressed"]

@@ -108,7 +108,7 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 18
 text = "PLAYERS
 - Each player has their own unique set of keys, these keys will make up random combinations
--The player needs to react the keys to beat out their oppenent and deal damage 
+-The player needs to react to the keys to beat out their oppenent and deal damage 
 - Fisrt players to lose all the lifes dies
 - GOOD LUCK 
 -May you be the fastest Samueri in the Land "
