@@ -19,6 +19,7 @@ config/features=PackedStringArray("4.5", "Forward Plus")
 GameManager="*res://Scripts/managers/game_manager.gd"
 InputManager="*res://Scripts/managers/input_manager.gd"
 AudioManager="*res://Scripts/managers/audio_manager.gd"
+StatsManager="*res://Scripts/managers/StatsManager.gd"
 
 [display]
 
