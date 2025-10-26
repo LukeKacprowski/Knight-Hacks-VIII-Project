@@ -115,16 +115,16 @@ func _on_both_players_failed():
 
 func _on_player1_wins_round():
 	print("Player 1 wins round!")
+	animation_controller.play_animation("p1_hit")
 	InputManager.end_round()
 	StatsManager.add_round(0)
 	
-	# Play win animation
-	#await animation_controller.play_player_win_sequence(0)
 	
 	player_data_manager.apply_damage(1)
 
 func _on_player2_wins_round():
 	print("Player 2 wins round!")
+	animation_controller.play_animation("p2_hit")
 	InputManager.end_round()
 	StatsManager.add_round(1)
 	
