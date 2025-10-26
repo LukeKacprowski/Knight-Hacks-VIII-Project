@@ -69,6 +69,7 @@ func _on_both_players_succeed():
 	print("Both players succeed!")
 	cameras.trigger_shake()
 	AudioManager.play_sword_clash()
+	cameras.trigger_shake()
 	InputManager.end_round()
 	
 	await get_tree().create_timer(0.5).timeout
@@ -79,6 +80,7 @@ func _on_both_players_failed():
 	print("Both players failed!")
 	cameras.trigger_shake()
 	AudioManager.play_sword_clash()
+	cameras.trigger_shake()
 	InputManager.end_round()
 	
 	await get_tree().create_timer(0.5).timeout
