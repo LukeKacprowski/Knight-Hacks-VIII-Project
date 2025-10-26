@@ -96,7 +96,6 @@ offset_bottom = 330.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_28flt")
-metadata/_edit_lock_ = true
 
 [node name="PixellabRemoveThePerson1761392256343" type="Sprite2D" parent="Panel"]
 texture_filter = 1
