@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://cje1abwdrcd0k"]
+[gd_scene load_steps=3 format=3 uid="uid://cje1abwdrcd0k"]
 
 [ext_resource type="Script" uid="uid://ch5djgu1t213e" path="res://Scripts/stats.gd" id="1_u72eg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u72eg"]
+bg_color = Color(0.0011974451, 0.0011974451, 0.0011974442, 1)
 
 [node name="Stats" type="Control"]
 layout_mode = 3
@@ -12,6 +15,7 @@ grow_vertical = 2
 script = ExtResource("1_u72eg")
 
 [node name="Panel" type="Panel" parent="."]
+texture_filter = 1
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -24,3 +28,140 @@ offset_right = 576.0
 offset_bottom = 324.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_u72eg")
+
+[node name="stats_label" type="Label" parent="Panel"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -233.0
+offset_top = -3.0
+offset_right = 235.7323
+offset_bottom = 107.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.47058824, 0, 0, 1)
+theme_override_constants/shadow_offset_x = -4
+theme_override_constants/shadow_offset_y = 4
+theme_override_font_sizes/font_size = 50
+text = "Stats"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 104.0
+offset_right = 1146.0
+offset_bottom = 331.0
+theme_override_constants/separation = 28
+
+[node name="total_games" type="Label" parent="VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.47058824, 0, 0, 1)
+theme_override_constants/shadow_offset_x = -4
+theme_override_constants/shadow_offset_y = 4
+theme_override_font_sizes/font_size = 25
+text = "TG"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="total_round wins" type="Label" parent="VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.47058824, 0, 0, 1)
+theme_override_constants/shadow_offset_x = -4
+theme_override_constants/shadow_offset_y = 4
+theme_override_font_sizes/font_size = 25
+text = "TRW"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Round_count" type="Label" parent="VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.47058824, 0, 0, 1)
+theme_override_constants/shadow_offset_x = -4
+theme_override_constants/shadow_offset_y = 4
+theme_override_font_sizes/font_size = 25
+text = "RCR"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="P1_GW" type="Label" parent="VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.47058824, 0, 0, 1)
+theme_override_constants/shadow_offset_x = -4
+theme_override_constants/shadow_offset_y = 4
+theme_override_font_sizes/font_size = 25
+text = "Results "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="P1_RW" type="Label" parent="VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.47058824, 0, 0, 1)
+theme_override_constants/shadow_offset_x = -4
+theme_override_constants/shadow_offset_y = 4
+theme_override_font_sizes/font_size = 25
+text = "Results "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="P1_flawless" type="Label" parent="VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.47058824, 0, 0, 1)
+theme_override_constants/shadow_offset_x = -4
+theme_override_constants/shadow_offset_y = 4
+theme_override_font_sizes/font_size = 25
+text = "Results "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="P2_GW" type="Label" parent="VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.47058824, 0, 0, 1)
+theme_override_constants/shadow_offset_x = -4
+theme_override_constants/shadow_offset_y = 4
+theme_override_font_sizes/font_size = 25
+text = "Results "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="P2_RW" type="Label" parent="VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.47058824, 0, 0, 1)
+theme_override_constants/shadow_offset_x = -4
+theme_override_constants/shadow_offset_y = 4
+theme_override_font_sizes/font_size = 25
+text = "Results "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="P2_flawless" type="Label" parent="VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.47058824, 0, 0, 1)
+theme_override_constants/shadow_offset_x = -4
+theme_override_constants/shadow_offset_y = 4
+theme_override_font_sizes/font_size = 25
+text = "Results "
+horizontal_alignment = 1
+vertical_alignment = 1
