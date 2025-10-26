@@ -8,6 +8,8 @@ extends Node
 @onready var timer = $UI/Timer
 @onready var p1_letter_container = $"UI/Player1HUD/Letter Container"
 @onready var p2_letter_container = $"UI/Player2HUD/Letter Container"
+@onready var p1_hud = $UI/Player1HUD
+@onready var p2_hud = $UI/Player2HUD
 @onready var cameras: Camera2D = $Camera2D
 
 # Optional: assign a PackedScene (e.g., HitBurst.tscn with a GPUParticles2D one_shot) in the Inspector.
@@ -17,12 +19,20 @@ var game_started: bool = false
 const base_round_time: float = 6.0
 var new_round_time: float = base_round_time
 
+signal game_over(winner_id: int)
+
 func _ready() -> void:
 	# Wait one frame for all @onready variables to initialize
 	await get_tree().process_frame
 	
 	# Set up letter display manager with container references
 	letter_display_manager.set_containers(p1_letter_container, p2_letter_container)
+	
+	# Set up player HUDs - they will automatically connect to player data
+	if p1_hud:
+		p1_hud.setup(0, "Player 1", 3)
+	if p2_hud:
+		p2_hud.setup(1, "Player 2", 3)
 	
 	# Connect RoundController signals
 	round_controller.player_key_pressed.connect(_on_player_key_pressed)
@@ -36,7 +46,6 @@ func _ready() -> void:
 	# Connect PlayerDataManager signals
 	player_data_manager.player_damaged.connect(_on_player_damaged)
 	player_data_manager.player_died.connect(_on_player_died)
-	
 	
 	AudioManager.play_game_music()
 	start_game_sequence()
@@ -78,7 +87,7 @@ func _on_both_players_succeed():
 	AudioManager.play_sword_clash()
 	cameras.trigger_shake()
 
-	# >>> spawn collision particles at the intersection <<<
+	# Spawn collision particles at the intersection
 	_spawn_collision_particles_from_players()
 
 	InputManager.end_round()
@@ -95,7 +104,7 @@ func _on_both_players_failed():
 	AudioManager.play_sword_clash()
 	cameras.trigger_shake()
 
-	# >>> spawn collision particles at the intersection <<<
+	# Spawn collision particles at the intersection
 	_spawn_collision_particles_from_players()
 
 	InputManager.end_round()
@@ -106,19 +115,21 @@ func _on_both_players_failed():
 
 func _on_player1_wins_round():
 	print("Player 1 wins round!")
+	animation_controller.play_animation("p1_hit")
 	InputManager.end_round()
 	StatsManager.add_round(0)
 	
-	await get_tree().create_timer(0.5).timeout
 	
 	player_data_manager.apply_damage(1)
 
 func _on_player2_wins_round():
 	print("Player 2 wins round!")
+	animation_controller.play_animation("p2_hit")
 	InputManager.end_round()
 	StatsManager.add_round(1)
 	
-	await get_tree().create_timer(0.5).timeout
+	# Play win animation
+	#await animation_controller.play_player_win_sequence(1)
 	
 	player_data_manager.apply_damage(0)
 
@@ -130,6 +141,7 @@ func _on_player_key_pressed(player_id: int, correct: bool):
 		else:
 			print("P1 incorrect key")
 			letter_display_manager.play_letter_animation(0, false)
+			#cameras.trigger_shake(3.0)
 	else:
 		if correct:
 			print("P2 correct key")
@@ -137,25 +149,24 @@ func _on_player_key_pressed(player_id: int, correct: bool):
 		else:
 			print("P2 incorrect key")
 			letter_display_manager.play_letter_animation(1, false)
+			#cameras.trigger_shake(3.0)
 
 func _on_player_damaged(player_id: int, lives_left: int):
 	print("Player ", player_id + 1, " damaged. Lives left: ", lives_left)
 	AudioManager.play_player_hit()
-	#Update Lives on player HUD
-	if player_id == 0:
-		#update p1 HUD
-		pass
-	else:
-		#update p2 HUD
-		pass
+	
+	# The HUD automatically updates via PlayerData signal connections
+	# Wait for the heart loss animation to complete (approximately 0.6s)
+	await get_tree().create_timer(0.6).timeout
 	
 	if lives_left > 0:
 		start_new_round(new_round_time)
 
-signal game_over(winner_id: int)
-
 func _on_player_died(player_id: int):
 	print("Player ", player_id + 1, " died!")
+	
+	# Play game over animation
+	#await animation_controller.play_game_over_animation(player_id)
 	
 	var winner_id = 1 - player_id
 	
@@ -176,9 +187,7 @@ func _on_player_died(player_id: int):
 	emit_signal("game_over", winner_id)
 
 
-# =========================
-# Collision particle helpers
-# =========================
+#Particles
 
 func _spawn_collision_particles_from_players(intensity: float = 1.0) -> void:
 	var p1_pos := _get_player_position(0)
@@ -206,22 +215,22 @@ func _spawn_burst_at(pos: Vector2, intensity: float = 1.0) -> void:
 		p.name = "Burst"
 		p.one_shot = true
 		p.emitting = false
-		p.amount = int(80 * max(0.2, intensity))
-		p.lifetime = 0.6
-		p.explosiveness = 1.0
+		p.amount = int(10 * max(0.2, intensity))
+		p.lifetime = 0.4
+		p.explosiveness = .6
 		
 		var mat := ParticleProcessMaterial.new()
 		# Randomize emission center so it doesn't bias to one side
 		var theta := randf() * TAU                   # random angle 0..2π
 		mat.direction = Vector3(cos(theta), sin(theta), 0.0)
-		mat.spread = 180.0                           # half-circle around random direction; change to 360 for full ring look
+		mat.spread = 180.0                           # half-circle around random direction
 		
 		# Smaller radius (lower velocities)
-		mat.initial_velocity_min = 60.0
-		mat.initial_velocity_max = 140.0
+		mat.initial_velocity_min = 20.0
+		mat.initial_velocity_max = 80.0
 		mat.gravity = Vector3(0, 0, 0)               # no downward bias
-		mat.scale_min = 0.6
-		mat.scale_max = 1.2
+		mat.scale_min = 0.5
+		mat.scale_max = .8
 		
 		p.process_material = mat
 		burst_root.add_child(p)

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ba6dbw4opp33o"
-path="res://.godot/imported/GameplayScene-Sheet.png-a3a511ce838ee1c81df2b515f605a7fe.ctex"
+uid="uid://cm1cvao4oqn86"
+path="res://.godot/imported/HitScenes-Sheet.png-2d6105bd43b9f32bca395bea54757032.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/sprites/gameplay/GameplayScene-Sheet.png"
-dest_files=["res://.godot/imported/GameplayScene-Sheet.png-a3a511ce838ee1c81df2b515f605a7fe.ctex"]
+source_file="res://Assets/sprites/gameplay/HitScenes-Sheet.png"
+dest_files=["res://.godot/imported/HitScenes-Sheet.png-2d6105bd43b9f32bca395bea54757032.ctex"]
 
 [params]
 
