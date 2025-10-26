@@ -37,6 +37,7 @@ func _ready() -> void:
 	player_data_manager.player_damaged.connect(_on_player_damaged)
 	player_data_manager.player_died.connect(_on_player_died)
 	
+	
 	AudioManager.play_game_music()
 	start_game_sequence()
 
@@ -47,6 +48,7 @@ func _process(delta: float) -> void:
 
 func start_game_sequence():
 	play_intro()
+	#await get_tree().create_timer(3).timeout
 	game_started = true
 	start_new_round(base_round_time)
 
@@ -70,6 +72,8 @@ func _on_round_started(p1_letter_sequence: Array, p2_letter_sequence: Array):
 
 func _on_both_players_succeed():
 	print("Both players succeed!")
+	animation_controller.play_animation("clash")
+	await get_tree().create_timer(0.5).timeout
 	cameras.trigger_shake()
 	AudioManager.play_sword_clash()
 	cameras.trigger_shake()
@@ -85,6 +89,8 @@ func _on_both_players_succeed():
 
 func _on_both_players_failed():
 	print("Both players failed!")
+	animation_controller.play_animation("clash")
+	await get_tree().create_timer(0.5).timeout
 	cameras.trigger_shake()
 	AudioManager.play_sword_clash()
 	cameras.trigger_shake()
