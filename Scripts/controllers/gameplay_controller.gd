@@ -11,9 +11,7 @@ extends Node
 @onready var p1_hud = $UI/Player1HUD2
 @onready var p2_hud = $UI/Player2HUD2
 @onready var cameras: Camera2D = $Camera2D
-
-# Optional: assign a PackedScene (e.g., HitBurst.tscn with a GPUParticles2D one_shot) in the Inspector.
-@export var hit_burst_scene: PackedScene
+@onready var particle_manager = $GameLogic/ParticleManager
 
 var game_started: bool = false
 const base_round_time: float = 6.0
@@ -50,7 +48,7 @@ func _ready() -> void:
 	AudioManager.play_game_music()
 	start_game_sequence()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	# Update timer display
 	if round_controller.round_active:
 		timer.update_time(round_controller.current_time)
@@ -84,11 +82,9 @@ func _on_both_players_succeed():
 	animation_controller.play_animation("clash")
 	await get_tree().create_timer(0.5).timeout
 	cameras.trigger_shake()
+	particle_manager.spawn_sparks()
 	AudioManager.play_sword_clash()
 	cameras.trigger_shake()
-
-	# Spawn collision particles at the intersection
-	_spawn_collision_particles_from_players()
 
 	InputManager.end_round()
 	
@@ -100,12 +96,10 @@ func _on_both_players_failed():
 	print("Both players failed!")
 	animation_controller.play_animation("clash")
 	await get_tree().create_timer(0.5).timeout
+	particle_manager.spawn_sparks()
 	cameras.trigger_shake()
 	AudioManager.play_sword_clash()
 	cameras.trigger_shake()
-
-	# Spawn collision particles at the intersection
-	_spawn_collision_particles_from_players()
 
 	InputManager.end_round()
 	
@@ -118,8 +112,6 @@ func _on_player1_wins_round():
 	animation_controller.play_animation("p1_hit")
 	InputManager.end_round()
 	StatsManager.add_round(0)
-	
-	# Play win animation
 	
 	
 	player_data_manager.apply_damage(1)
@@ -157,8 +149,6 @@ func _on_player_damaged(player_id: int, lives_left: int):
 	print("Player ", player_id + 1, " damaged. Lives left: ", lives_left)
 	AudioManager.play_player_hit()
 	
-	# The HUD automatically updates via PlayerData signal connections
-	# Wait for the health bar animation to complete (approximately 0.4s)
 	await get_tree().create_timer(0.4).timeout
 	
 	if lives_left > 0:
@@ -184,84 +174,3 @@ func _on_player_died(player_id: int):
 	GameManager.goto("results")
 	
 	emit_signal("game_over", winner_id)
-
-
-# =========================
-# Collision particle helpers
-# =========================
-
-func _spawn_collision_particles_from_players(intensity: float = 1.0) -> void:
-	var p1_pos := _get_player_position(0)
-	var p2_pos := _get_player_position(1)
-	var pos: Vector2 = (p1_pos + p2_pos) * 0.5
-	_spawn_burst_at(pos, intensity)
-
-func _get_player_position(player_id: int) -> Vector2:
-	# Prefer a method on PlayerDataManager if available
-	if player_data_manager and player_data_manager.has_method("get_player_position"):
-		return player_data_manager.get_player_position(player_id)
-	# Fallback: use camera center to avoid nulls
-	return cameras.global_position
-
-func _spawn_burst_at(pos: Vector2, intensity: float = 1.0) -> void:
-	var parent := get_tree().current_scene if get_tree().current_scene != null else self
-	var burst_root: Node2D
-	
-	if hit_burst_scene:
-		burst_root = hit_burst_scene.instantiate() as Node2D
-	else:
-		# Build a compact, randomized one-shot GPUParticles2D at runtime
-		burst_root = Node2D.new()
-		var p := GPUParticles2D.new()
-		p.name = "Burst"
-		p.one_shot = true
-		p.emitting = false
-		p.amount = int(10 * max(0.2, intensity))
-		p.lifetime = 0.4
-		p.explosiveness = .6
-		
-		var mat := ParticleProcessMaterial.new()
-		# Randomize emission center so it doesn't bias to one side
-		var theta := randf() * TAU                   # random angle 0..2π
-		mat.direction = Vector3(cos(theta), sin(theta), 0.0)
-		mat.spread = 180.0                           # half-circle around random direction
-		
-		# Smaller radius (lower velocities)
-		mat.initial_velocity_min = 20.0
-		mat.initial_velocity_max = 80.0
-		mat.gravity = Vector3(0, 0, 0)               # no downward bias
-		mat.scale_min = 0.5
-		mat.scale_max = .8
-		
-		p.process_material = mat
-		burst_root.add_child(p)
-	
-	burst_root.global_position = pos
-	
-	# If using a PackedScene for particles, rotate the node randomly to avoid directional bias
-	if hit_burst_scene:
-		burst_root.rotation = randf() * TAU
-	
-	parent.add_child(burst_root)
-	
-	var particles := burst_root.get_node_or_null("Burst") as GPUParticles2D
-	if particles == null:
-		for c in burst_root.get_children():
-			if c is GPUParticles2D:
-				particles = c
-				break
-	
-	if particles == null:
-		burst_root.queue_free()
-		return
-	
-	# Keep amount sensible with intensity scaling
-	particles.amount = int(max(10, particles.amount * max(0.2, intensity)))
-	particles.emitting = true
-	
-	# Auto-cleanup (prefer finished signal if available)
-	if particles.has_signal("finished"):
-		particles.connect("finished", Callable(burst_root, "queue_free"))
-	else:
-		await get_tree().create_timer(particles.lifetime + 0.2).timeout
-		burst_root.queue_free()

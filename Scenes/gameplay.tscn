@@ -1,4 +1,4 @@
-[gd_scene load_steps=95 format=3 uid="uid://ddqooonv3q8n7"]
+[gd_scene load_steps=98 format=3 uid="uid://ddqooonv3q8n7"]
 
 [ext_resource type="Script" uid="uid://dqoea6dokts24" path="res://Scripts/controllers/camera_controller.gd" id="1_r8bcl"]
 [ext_resource type="Script" path="res://Scripts/controllers/gameplay_controller.gd" id="1_rlidi"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://bhwiooed0q65q" path="res://Assets/ui/timerUI/TimerProgress.png" id="8_puebw"]
 [ext_resource type="Texture2D" uid="uid://cjno2nnge1idt" path="res://Assets/ui/timerUI/TimerBorder.png" id="9_5h7oy"]
 [ext_resource type="Script" uid="uid://bittlp5o23wnb" path="res://Scripts/ui/timer.gd" id="10_5h7oy"]
+[ext_resource type="Script" uid="uid://eoxc83y67emc" path="res://Scripts/managers/particle_manager.gd" id="10_p1ih8"]
 [ext_resource type="Script" uid="uid://usl6w0f3h1mh" path="res://Scripts/ui/player_hud.gd" id="12_rg35f"]
 [ext_resource type="Texture2D" uid="uid://drb0v0of86tns" path="res://Assets/ui/Player1HealthBarProgress.png" id="13_ra47u"]
 [ext_resource type="Texture2D" uid="uid://dbsklpq5imeak" path="res://Assets/ui/Player1HealthBarOver.png" id="14_r5xtw"]
@@ -573,6 +574,15 @@ animations = [{
 "speed": 14.0
 }]
 
+[sub_resource type="Curve" id="Curve_decfu"]
+_limits = [-360.0, 360.0, 0.0, 1.0]
+_data = [Vector2(0, 271.0113), 0.0, 0.0, 0, 0, Vector2(1, -303.3708), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_p1ih8"]
+_data = [Vector2(0, 0.9550562), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
 [node name="GameplayScene" type="Node2D"]
 position = Vector2(388, 321)
 script = ExtResource("1_rlidi")
@@ -610,8 +620,25 @@ script = ExtResource("5_puebw")
 script = ExtResource("8_ltefv")
 
 [node name="ParticleManager" type="Node" parent="GameLogic"]
+script = ExtResource("10_p1ih8")
 
 [node name="VFXLayer" type="Node2D" parent="."]
+
+[node name="SparkParticle" type="CPUParticles2D" parent="VFXLayer"]
+emitting = false
+amount = 6
+one_shot = true
+speed_scale = 3.0
+explosiveness = 0.95
+randomness = 0.71
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 25.0
+initial_velocity_max = 50.0
+angular_velocity_curve = SubResource("Curve_decfu")
+scale_amount_min = 2.0
+scale_amount_max = 2.0
+scale_amount_curve = SubResource("Curve_p1ih8")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
