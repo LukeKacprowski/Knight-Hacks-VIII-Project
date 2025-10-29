@@ -110,6 +110,8 @@ func _on_both_players_failed():
 func _on_player1_wins_round():
 	print("Player 1 wins round!")
 	animation_controller.play_animation("p1_hit")
+	await get_tree().create_timer(0.5).timeout
+	particle_manager.spawn_blood_p2()
 	InputManager.end_round()
 	StatsManager.add_round(0)
 	
@@ -119,6 +121,8 @@ func _on_player1_wins_round():
 func _on_player2_wins_round():
 	print("Player 2 wins round!")
 	animation_controller.play_animation("p2_hit")
+	await get_tree().create_timer(0.5).timeout
+	particle_manager.spawn_blood_p1()
 	InputManager.end_round()
 	StatsManager.add_round(1)
 	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=98 format=3 uid="uid://ddqooonv3q8n7"]
+[gd_scene load_steps=99 format=3 uid="uid://ddqooonv3q8n7"]
 
 [ext_resource type="Script" uid="uid://dqoea6dokts24" path="res://Scripts/controllers/camera_controller.gd" id="1_r8bcl"]
 [ext_resource type="Script" path="res://Scripts/controllers/gameplay_controller.gd" id="1_rlidi"]
@@ -583,6 +583,10 @@ point_count = 2
 _data = [Vector2(0, 0.9550562), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
+[sub_resource type="Gradient" id="Gradient_p1ih8"]
+offsets = PackedFloat32Array(0, 0.15463917, 0.57216495)
+colors = PackedColorArray(0.8627451, 0.15686275, 0.15686275, 1, 0.4039033, 7.6407565e-07, 2.4065375e-08, 1, 0.3137255, 0, 0, 0)
+
 [node name="GameplayScene" type="Node2D"]
 position = Vector2(388, 321)
 script = ExtResource("1_rlidi")
@@ -639,6 +643,52 @@ angular_velocity_curve = SubResource("Curve_decfu")
 scale_amount_min = 2.0
 scale_amount_max = 2.0
 scale_amount_curve = SubResource("Curve_p1ih8")
+
+[node name="BloodSlash1" type="CPUParticles2D" parent="VFXLayer"]
+position = Vector2(56, 19)
+rotation = -2.9077184
+emitting = false
+amount = 25
+one_shot = true
+explosiveness = 1.0
+emission_shape = 1
+emission_sphere_radius = 7.0
+direction = Vector2(1, 0.7)
+spread = 40.0
+initial_velocity_min = 120.0
+initial_velocity_max = 200.0
+angular_velocity_min = -180.0
+angular_velocity_max = 180.0
+radial_accel_min = -50.0
+radial_accel_max = -20.0
+damping_min = 20.0
+damping_max = 40.0
+scale_amount_max = 1.5
+color = Color(0.53333336, 0, 0, 1)
+color_ramp = SubResource("Gradient_p1ih8")
+
+[node name="BloodSlash2" type="CPUParticles2D" parent="VFXLayer"]
+position = Vector2(-56, 18)
+rotation = -1.6859881
+emitting = false
+amount = 25
+one_shot = true
+explosiveness = 1.0
+emission_shape = 1
+emission_sphere_radius = 7.0
+direction = Vector2(1, 0.7)
+spread = 40.0
+initial_velocity_min = 120.0
+initial_velocity_max = 200.0
+angular_velocity_min = -180.0
+angular_velocity_max = 180.0
+radial_accel_min = -50.0
+radial_accel_max = -20.0
+damping_min = 20.0
+damping_max = 40.0
+scale_amount_max = 1.5
+color = Color(0.53333336, 0, 0, 1)
+color_ramp = SubResource("Gradient_p1ih8")
 
 [node name="UI" type="CanvasLayer" parent="."]
 

@@ -6,8 +6,14 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 func spawn_sparks():
 	$"../../VFXLayer/SparkParticle".emitting = true
+
+func spawn_blood_p2():
+	$"../../VFXLayer/BloodSlash1".emitting = true
+
+func spawn_blood_p1():
+	$"../../VFXLayer/BloodSlash2".emitting = true
